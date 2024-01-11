@@ -1,0 +1,10 @@
+package day0108;
+
+public class OperReview_02 {
+
+	public static void main(String[] args) {
+		// 나이와 띠 구하기
+
+	}
+
+}

@@ -1,0 +1,13 @@
+package day0109;
+
+public class ArrString_11 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// 문자열 배열
+		String [] str1 = {"안녕", "ABC", "키보드", "비타민", "떡볶이"};
+		
+
+	}
+
+}

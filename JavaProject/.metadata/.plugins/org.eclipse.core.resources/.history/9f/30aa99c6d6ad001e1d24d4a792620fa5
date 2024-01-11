@@ -1,0 +1,10 @@
+package day0108;
+
+public class SumTest_11 {
+
+	public static void main(String[] args) {
+		// 반복문 안에서 합계 구하기
+
+	}
+
+}

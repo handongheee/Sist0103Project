@@ -1,0 +1,31 @@
+package day0105;
+
+import java.util.Scanner;
+
+public class QuizOper_14 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		String name, grade;
+		int java;
+		
+		System.out.printf("이름을 입력해 주세요. ");
+		name = sc.nextLine();
+		
+		System.out.printf("자바 시험 점수를 입력해 주세요. ");
+		java = sc.nextInt();
+		
+		if (java >= 90) {
+			grade = "매우 잘함";
+		} else if (java >= 80) {
+			grade ="잘함";
+		}
+		
+		System.out.println("==========================");
+
+		
+
+	}
+
+}

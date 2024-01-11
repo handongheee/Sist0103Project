@@ -1,0 +1,25 @@
+package day0108;
+
+import java.util.Scanner;
+
+public class book131_16 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		boolean run = true;
+		int speed=0;
+		
+		while(run) {
+			System.out.println("-------------------");
+			System.out.println("1. 증속 | 2. 감속 | 3. 중지");
+			System.out.println("-------------------");
+			System.out.println("선택: ");
+			
+			String strNum = sc.nextLine();
+			
+		}
+
+	}
+
+}

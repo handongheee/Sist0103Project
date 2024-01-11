@@ -1,0 +1,39 @@
+package day0110;
+
+public class ArrChangeDatas_04 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int [] arr = {6, 2, 5, 1, 65, 32, 78, 234, 54, 11};
+		
+		System.out.println("**원 데이터**");
+		
+		for(int i=0; i<arr.length; i++) {
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+		
+		System.out.println("**거꾸로 데이터**");
+		
+		for(int i=0; i<arr.length/2; i++) {
+			int tmp=arr[i];
+			arr[i]=arr[arr.length-1-i]; // 10개일 때 0하고 9번하고 바꾸는 것
+			arr[arr.length-1-i]=tmp;
+		}
+		
+		// 출력
+		for(int i=0; i<arr.length; i++) {
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+		
+		System.out.println("**오름차순 정렬**");
+		// 가장 작은 숫자 앞으로 보내기(선택정렬)
+		// Arrays.sort(arr)
+		
+		
+		
+
+	}
+
+}

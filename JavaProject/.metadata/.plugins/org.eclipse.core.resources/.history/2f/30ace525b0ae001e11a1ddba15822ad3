@@ -1,0 +1,21 @@
+package day0109;
+
+public class ArraysString_09 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// 배열 선언
+		String [] str;
+		str = new String[4];
+		
+		// 초기화
+		str[0] = "김가나";
+		str[1] = "이가나";
+		str[2] = "박가나";
+		str[3] = "정가나";
+				
+
+	}
+
+}

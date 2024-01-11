@@ -1,0 +1,37 @@
+package day0108;
+
+import java.util.Scanner;
+
+public class OperYoon_04 {
+
+	public static void main(String[] args) {
+		// 윤년 공식: year%4==0 && year%100!=0 || year%400==0
+		// 연도를 입력해서 그 해가 윤년인지 평년인지 출력하고 해당 달이 며칠까지 있는지 출력
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int year, month, days;
+		boolean flag; // 윤년 유무 구분
+		
+		System.out.println("년도와 월 입력: ");
+		year = sc.nextInt();
+		month = sc.nextInt();
+		
+		// 월 잘 못 입력 시 프로그램 종료
+		if (month<1 || month>12) {
+			System.out.println("월을 잘 못 입력했어요!");
+			return; // 메인 메서드 종료
+		} 
+		
+		// 윤년 구하기
+		flag = year%4==0 && year%100!=0 || year%400==0;
+		
+		// if(flag==true) = if(true)
+		if(flag) {
+			System.out.println(year+"년도는 윤년입니다.");
+		} else {
+			System.out.println(year+"년도는 평년입니다.");
+		}
+	}
+
+}

@@ -1,0 +1,15 @@
+package day0109;
+
+public class WhileReview_03 {
+
+	public static void main(String[] args) {
+		/*
+		 * 반복적으로 나이를 입력한다. 0이 되면 종료
+		 * 나이가 50세 이상 일 경우, a변수 증가
+		 * 나이가 30세 이상 일 경우, b변수 증가 
+		 * 그 외는 c변수 증가
+		 */
+
+	}
+
+}

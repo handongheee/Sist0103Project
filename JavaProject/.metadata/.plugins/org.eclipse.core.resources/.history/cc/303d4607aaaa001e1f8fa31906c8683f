@@ -1,0 +1,25 @@
+package day0104;
+
+public class QuizDateType_10 {
+
+	public static void main(String[] args) {
+		String name = "김선호";
+		String area = "부산";
+		String age = 23;
+		
+		int java = Integer.parseInt(args[0]);
+		int oracle = Integer.parseInt(args[1]);
+		
+		int tot = java+oracle;
+		
+		System.out.printf("학생명: %s\n", name);
+		System.out.printf("지역: %s\n", area);
+		System.out.printf("나이: %s\n", age);
+		System.out.println("================");
+		System.out.printf("%s님의 java 점수는 %d, oracle 점수 %d, 총 %d입니다."name, java, oracle, tot);
+		
+		
+
+	}
+
+}

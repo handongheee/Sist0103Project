@@ -1,0 +1,23 @@
+package day0108;
+
+public class QuizForWhile_15 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		test1();
+	}
+	
+	public static void test1() {
+		// 문제1: 1~100까지 3의 배수 갯수 구하기
+		
+	}
+	
+	public static void test2() {
+
+	}
+	
+	public static void test3() {
+
+	}
+
+}

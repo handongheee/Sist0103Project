@@ -1,0 +1,66 @@
+package day0109;
+
+public class ForStar_02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("** 다중 for문으로 star(*) 출력하기 **");
+
+		/*
+		 *  *****
+		 *  *****
+		 *  *****
+		 *  *****
+		 *  *****		 
+		 */
+		for(int i=1; i<=5; i++) { // 행 개수
+
+			for(int j=1; j<=5; j++) { // 열 개수
+				System.out.print("*");
+
+			}
+			System.out.println();
+		}
+		System.out.println();
+
+
+		/* 삼각
+		 *  *
+		 *  **
+		 *  ***
+		 *  ****
+		 *  *****
+		 */
+		for(int i=1; i<=5; i++) { // 행 개수 
+
+			for(int j=1; j<=i; j++) { // 열 개수 (i 값 만큼만 반복)
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		System.out.println();
+
+
+		/* 역삼각
+		 *  *****
+		 *  ****
+		 *  ***
+		 *  **
+		 *  *
+		 */
+		for(int i=1; i<=5; i++) { // 행 개수 
+
+			for(int j=i; j<=5; j++) { // 열 개수 (i 값이 1일 때 5번, 2일때 4번.. 5일 때 1)
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+		System.out.println();
+
+
+
+
+
+	}
+
+}

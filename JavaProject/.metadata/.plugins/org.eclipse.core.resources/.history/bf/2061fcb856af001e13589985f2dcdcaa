@@ -1,0 +1,11 @@
+package day0110;
+
+public class ArrChangeDatas_04 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int [] arr = {6, 2, 5, 1, 65, 32, 78, 234, 54, 11};
+
+	}
+
+}

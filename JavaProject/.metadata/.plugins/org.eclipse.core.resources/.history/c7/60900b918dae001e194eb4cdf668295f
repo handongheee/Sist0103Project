@@ -1,0 +1,12 @@
+package day0109;
+
+public class StringIn_01 {
+
+	public static void main(String[] args) {
+		// 이름을 반복 입력해서 김씨가 몇명인지?...끝이라고 쓰면 종료
+		
+		
+
+	}
+
+}

@@ -1,0 +1,13 @@
+package day0108;
+
+import java.util.Scanner;
+
+public class OperReview_01 {
+	public static void main (String[] args) {
+		// import, 선언, 입력, 계산, 출력
+		Scanner sc = new Scanner(System.in);
+		
+		
+	}
+
+}

@@ -1,0 +1,49 @@
+package day0109;
+
+import java.util.Scanner;
+
+public class QuizFor_17 {
+
+	public static void main(String[] args) {
+		quiz1();
+		quiz2();
+		quiz3();
+
+	}
+
+	public static void quiz1() {
+		/* 팩토리얼 구할 숫자를 입력하여해당 숫자에 대한 팩토리얼 구하기
+		팩토리얼 구할 숫자 입력
+		5
+		5!=120
+		 */
+		Scanner sc = new Scanner(System.in);
+
+		int f;
+		int result=1;
+
+		System.out.println("숫자를 입력하세요.");
+		f = sc.nextInt();
+
+		for(int i=f; i<f; i++) {
+			result*=i;
+		}
+		System.out.println(f+"!="+result);
+
+	}
+
+	public static void quiz2() {
+		/*
+		  두 수 x y를 입력 후 x의 y승 for문을 이용하여 구하기 x를 y횟수 만큼 곱하는것
+		  두수 입력
+		  3 3
+		  3의 3승은 27입니다
+		*/
+
+	}
+
+	public static void quiz3() {
+		// 1~100까지의 숫자 중 짝수의 합과 홀수의 합을 나눠서 출력 for
+	}
+
+}
