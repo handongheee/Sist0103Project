@@ -1,0 +1,20 @@
+package day0111;
+
+class Shop{
+	private String sangpum;
+	private int price;
+	private String sangpumSolor;
+	
+	public Shop(String sangpum, int price, String sangpumColor) {
+		// TODO Auto-generated constructor stub
+	}
+}
+
+public class ArrObTest_11 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
