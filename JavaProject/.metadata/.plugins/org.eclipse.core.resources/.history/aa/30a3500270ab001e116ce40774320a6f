@@ -1,8 +1,0 @@
-package day0105;
-
-public class book80_07 {
-	public static void main(String[] args) {
-		// 90페이지
-	}
-
-}

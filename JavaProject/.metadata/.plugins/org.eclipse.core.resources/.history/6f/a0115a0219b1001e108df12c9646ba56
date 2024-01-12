@@ -1,0 +1,55 @@
+package day0112;
+
+// 추상 부모클래스
+abstract class Board{
+	public abstract void play();
+}
+//////////////////
+
+class Insert extends Board {
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		System.out.println("입력합니다.");
+	}
+	
+}
+/////////////////
+
+class Select extends Board {
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		System.out.println("출력합니다.");
+	}
+}
+/////////////////
+
+class Update extends Board {
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		System.out.println("수정합니다.");
+	}
+}
+////////////////
+
+class Delete extends Board{
+	@Override
+	public void play() {
+		// TODO Auto-generated method stub
+		System.out.println("삭제합니다.");
+	}
+	
+}
+///////////////////
+
+
+public class Abstract_12 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

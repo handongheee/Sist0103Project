@@ -20,7 +20,4 @@ public class SubObj_03 extends SuperObj_03 {
 		System.out.println("주소: "+this.addr);
 	}
 
-	
-	
-
 }

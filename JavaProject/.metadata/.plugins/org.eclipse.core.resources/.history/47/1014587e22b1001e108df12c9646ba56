@@ -1,0 +1,84 @@
+package day0112;
+
+class Quiz{
+	private String Name;
+	private int Java;
+	private int Oracle;
+	private int Html;
+	
+	public Quiz(String name, int java, int oracle, int html) {
+		this.Name=name;
+		this.Java=java;
+		this.Oracle=orcal;
+		this.Html=html;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public int getJava() {
+		return Java;
+	}
+
+	public void setJava(int java) {
+		Java = java;
+	}
+
+	public int getOracle() {
+		return Oracle;
+	}
+
+	public void setOracle(int oracle) {
+		Oracle = oracle;
+	}
+
+	public int getHtml() {
+		return Html;
+	}
+
+	public void setHtml(int html) {
+		Html = html;
+	}
+	
+	public int getTotal() {
+		int t = this.Java+this.Oracle+this.Html;
+		return t;
+	}
+	
+	public int getAverge() {
+		int av = getTotal()/3;
+		return av;
+	}
+	
+	public String getPyungga() {
+		int a = getAverge();
+		String p;
+		if(a>=90) {
+			p="장학생";
+		} else if(a>=80) {
+			p="합격";
+		} else {
+			p="불합격";
+		}
+		return p;
+	}
+	
+	
+	
+	
+	
+}
+
+public class QuizMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
