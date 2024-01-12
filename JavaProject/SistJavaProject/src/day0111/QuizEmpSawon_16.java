@@ -2,7 +2,7 @@ package day0111;
 
 import java.util.Scanner;
 
-/*
+/* 연습
  * 회사이름
  * 쌍용
  * 총사원수 입력
@@ -31,9 +31,6 @@ class Sawon{
 	
 	public static final String COMNAME="쌍용";
 
-	
-	
-	
 	public String getCoName() {
 		return coName;
 	}

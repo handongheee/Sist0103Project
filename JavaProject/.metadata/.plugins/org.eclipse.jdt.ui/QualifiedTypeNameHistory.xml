@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="day0110.ObjectEx_07"/>
     <fullyQualifiedTypeName name="day0110.StaticInstance_09"/>
@@ -13,4 +12,25 @@
     <fullyQualifiedTypeName name="java.awt.TextArea"/>
     <fullyQualifiedTypeName name="day0110.Test"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="day0111.Person"/>
+    <fullyQualifiedTypeName name="day0111.Apple"/>
+    <fullyQualifiedTypeName name="day0111.Banana"/>
+    <fullyQualifiedTypeName name="day0111.Orange"/>
+    <fullyQualifiedTypeName name="day0111.Test"/>
+    <fullyQualifiedTypeName name="day0111.MyCar"/>
+    <fullyQualifiedTypeName name="day0111.Member"/>
+    <fullyQualifiedTypeName name="day0111.Artist"/>
+    <fullyQualifiedTypeName name="day0111.MyTest"/>
+    <fullyQualifiedTypeName name="day0111.Manggo"/>
+    <fullyQualifiedTypeName name="day0111.Student1"/>
+    <fullyQualifiedTypeName name="day0111.Shop"/>
+    <fullyQualifiedTypeName name="day0111.MyInfo"/>
+    <fullyQualifiedTypeName name="day0111.MyCar1"/>
+    <fullyQualifiedTypeName name="day0111.Score"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="day0111.Emp"/>
+    <fullyQualifiedTypeName name="day0112.Food"/>
+    <fullyQualifiedTypeName name="day0112.Shop"/>
+    <fullyQualifiedTypeName name="day0112.SuperObj_03"/>
+    <fullyQualifiedTypeName name="day0112.SubObj_03"/>
 </qualifiedTypeNameHistroy>

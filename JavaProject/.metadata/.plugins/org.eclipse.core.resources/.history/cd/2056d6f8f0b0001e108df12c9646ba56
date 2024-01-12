@@ -1,0 +1,19 @@
+package day0112;
+
+public class Manager_04 extends Employee_04 {
+
+	String depart;
+	
+	public Manager_04(String name, int sal, String de) {
+		super(name, sal); // 부모생성자 호출
+		depart = de; // 부서 초기화
+	}
+	
+	// 오버라이딩/재정의된 메서드
+	@Override
+	public String getEmployee() {
+		// TODO Auto-generated method stub
+		return super.getEmployee()+", "+depart;
+	}
+
+}

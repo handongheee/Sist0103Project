@@ -1,0 +1,19 @@
+package day0112;
+
+class Food{
+	private String foodName;
+	private int fPrice;
+	
+	static int no;
+	
+}
+
+//////////////////////
+public class ArrReview_01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
