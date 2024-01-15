@@ -1,0 +1,20 @@
+package day0115;
+
+class Message{
+	public String command;
+	public String to;
+	
+	public Message(String command, String to) {
+		this.command=command;
+		this.to=to;
+	}
+}
+
+public class book679_Queue {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

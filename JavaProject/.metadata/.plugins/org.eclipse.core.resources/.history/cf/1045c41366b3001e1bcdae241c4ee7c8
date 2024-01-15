@@ -1,0 +1,42 @@
+package day0115;
+
+import java.util.List;
+import java.util.Scanner;
+import java.util.Vector;
+
+public class ShopArrayList {
+	
+	List<Shop> list = new Vector<Shop>();
+	
+	public void Ipgo() {
+		Scanner sc = new Scanner(System.in);
+		String sangName;
+		int su, dan;
+		
+		System.out.println("상품명?");
+		sangName = sc.nextLine();
+		
+		System.out.println("가격");
+		su = Integer.parseInt(sc.nextLine());
+		
+		System.out.println("수량");
+		dan = Integer.parseInt(sc.nextLine());
+		
+		Shop data = new Shop(sangName, su, dan);
+		list.add(data);
+		
+	}
+	
+	public void Jego() {
+		System.out.println("No.\t상품명\t가격\t수량\t총액");
+		System.out.println("--------------------------");
+		
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
