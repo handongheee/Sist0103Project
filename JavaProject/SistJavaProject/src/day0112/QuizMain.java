@@ -47,6 +47,7 @@ class Quiz{
 		Html = html;
 	}
 	
+	
 	public int getTotal() {
 		int t = this.Java+this.Oracle+this.Html;
 		return t;
@@ -79,7 +80,7 @@ class Quiz{
 
 public class QuizMain {
 	
-	public static void writeQuiz(Quiz []  quiz){
+	public static void writeQuiz(Quiz [] quiz){
 		Quiz.showTitle();
 		for(Quiz q: quiz) {
 			System.out.println(q.getName()+"\t"+q.getJava()+"\t"+q.getOracle()+"\t"+q.getHtml()+"\t"+q.getTotal()+"\t"+q.getAverge()+"\t"+q.getPyungga());

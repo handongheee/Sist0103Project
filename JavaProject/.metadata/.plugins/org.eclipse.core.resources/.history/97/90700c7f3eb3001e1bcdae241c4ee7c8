@@ -1,0 +1,14 @@
+package day0115;
+
+class Game{
+	abstract public void paly(); 
+}
+
+public class AbstractReview_02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
