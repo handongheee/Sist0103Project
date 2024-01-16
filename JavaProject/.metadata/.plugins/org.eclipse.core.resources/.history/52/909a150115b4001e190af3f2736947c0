@@ -1,0 +1,41 @@
+package day0116;
+
+class OuterObject {
+	int a=10;
+	static int b = 20;
+	
+	class InnerObject{
+		int c = 30;
+		
+		public void write() {
+			System.out.println("외부 인스턴스 변수 a= "+a);
+			System.out.println("외부 정적 변수 b= "+b);
+			System.out.println("내부변수 c= "+c);
+		}
+	}
+	
+	class InnerObject02{
+		int d=40;
+		static int e=50;
+		
+		public void write02() {
+			System.out.println("");
+		}
+		
+	}
+}
+///////////////////////
+
+
+
+public class InnerClass_07 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		OuterObject.InnerObject oin = new OuterObject().new InnerObject();
+		
+		oin.write();
+
+	}
+
+}
