@@ -1,6 +1,7 @@
 package day0117;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -21,7 +22,7 @@ public class FileReadWrite_06 {
 	public int getMenu() {
 
 		int num;
-		System.out.println("[메뉴] 1.상품추가	2.전체상품출력	5.종료");
+		System.out.println("[메뉴] 1.상품추가	2.전체상품출력	3.파일삭제		5.종료");
 		num=Integer.parseInt(sc.nextLine());
 
 		return num;
@@ -106,11 +107,11 @@ public class FileReadWrite_06 {
 
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("저장된 파일이 없습니다");
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			try {
 				br.close();
@@ -120,9 +121,22 @@ public class FileReadWrite_06 {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}	
 	}
+	
+	// 파일 삭제
+	public void deleteShop() {
+		// File 객체 생성
+		File file = new File(FILENAME);
+		
+		// 파일이 존재한다면 삭제
+		if(file.exists()) {
+			file.delete();
+		}
+		
+		System.out.println("*** 파일이 삭제되었습니다 ***");
+	}
+	
 
 	// 메인에서 처리할 메서드
 	public void process() {
@@ -138,6 +152,10 @@ public class FileReadWrite_06 {
 			case 2:
 				System.out.println("전체 상품을 출력합니다");
 				fileAllDatas();
+				break;
+			case 3:
+				System.out.println("파일을 삭제합니다");
+				deleteShop();
 				break;
 			case 5:
 				System.out.println("프로그램을 종료합니다");
