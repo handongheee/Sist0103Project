@@ -1,0 +1,17 @@
+package day0117;
+
+import java.io.FileWriter;
+
+public class FileWriter_03 {
+	
+	public static void fileWrite() {
+		FileWriter fw = null; // 선언
+		String fileName="C:\\sist0103\\file";
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

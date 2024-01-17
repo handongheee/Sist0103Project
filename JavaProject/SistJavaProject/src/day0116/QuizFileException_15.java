@@ -10,7 +10,7 @@ public class QuizFileException_15 {
 
 	public static void fileRead() {
 		String fName = "C:\\sist0103\\file\\fruitshop.txt";
-		FileReader fr = null;
+		FileReader fr = null; // 메서드는 자동초기화가 안돼서 null 넣어줌
 		BufferedReader br = null;
 		int cnt=0;
 		int tot=0;
@@ -25,17 +25,27 @@ public class QuizFileException_15 {
 
 			while(true) {
 				String s = br.readLine();
+				cnt++;
 
 				if(s==null) {
 					break;
 				}
+				
+				// 분리방법 01 StringTokenizer
+				StringTokenizer st = new StringTokenizer(s, ",");
+				// 배열의 갯수만큼 반복해서 출력
+				String sang = st.nextToken();
+				int su=Integer.parseInt(st.nextToken().trim()); // trim 공백제거
+				int dan=Integer.parseInt(st.nextToken().trim());
+				int total=su*dan;
+				
+				System.out.println(cnt+"\t"+sang+"\t"+su+"\t"+dan+"\t"+total);
 
-				String [] data = s.split(",");
-				
-				cnt++;
-				
-				tot = Integer.parseInt(data[1])*Integer.parseInt(data[2]);
-				System.out.println(cnt+"\t"+data[0]+"\t"+data[1]+"\t"+data[2]+"\t"+tot+"원");
+				// 분리방법 02 split
+//				String [] data = s.split(",");				
+//				tot = Integer.parseInt(data[1])*Integer.parseInt(data[2]);
+//				System.out.println(cnt+"\t"+data[0]+"\t"+data[1]+"\t"+data[2]+"\t"+tot+"원");
+							
 			}
 
 
