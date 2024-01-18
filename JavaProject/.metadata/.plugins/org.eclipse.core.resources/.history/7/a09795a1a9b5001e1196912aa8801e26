@@ -1,0 +1,30 @@
+package day0118;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class SwingBtnEvent_05 extends JFrame{
+	
+	Container cp;
+	
+	public SwingBtnEvent_05(String title) {
+		// TODO Auto-generated constructor stub
+		super(title);
+
+		cp = this.getContentPane();
+
+		this.setBounds(300, 100, 300, 300);
+		cp.setBackground(new Color(255, 255, 200));
+		
+		this.setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new SwingBtnEvent_05("버튼 이벤트05");
+
+	}
+
+}
