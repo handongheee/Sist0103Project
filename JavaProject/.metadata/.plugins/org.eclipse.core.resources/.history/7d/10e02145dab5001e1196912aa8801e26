@@ -1,0 +1,16 @@
+package day0118;
+
+/*
+ * 색상 별 버튼 5개
+ * 안녕하세요 가 출력되어있고 버튼 누르면 + 버튼색으로 글씨색 바뀜(버튼도 이름으로 버튼색 설정) (배열로 색깔 지정)
+ */
+
+
+public class QuizSwing_11 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
