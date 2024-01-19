@@ -1,0 +1,41 @@
+package day0119;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+
+public class JTable_05 extends JFrame {
+	
+	Container cp;
+	JTable tb1, tb2, tb3;
+	JTextArea area;
+	
+	public JTable_05(String title) {
+		// TODO Auto-generated constructor stub
+		super(title);
+
+		cp = this.getContentPane();
+
+		this.setBounds(1000, 500, 400, 300);
+		cp.setBackground(new Color(255, 255, 200));
+		
+		initDesign();
+
+		this.setVisible(true);
+	}
+	
+	public void initDesign() {
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new JTable_05("스윙 테이블05");
+		
+
+	}
+
+}
