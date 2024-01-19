@@ -53,7 +53,7 @@ public class QuizSwing_11 extends JFrame implements ActionListener {
 		panel.setBackground(Color.pink);
 		this.add(panel, BorderLayout.NORTH);
 		
-		result = new JLabel("안녕하세요");
+		result = new JLabel("안녕하세요"); // JLabel.CENTER
 		result.setFont(new FontUIResource("", Font.BOLD, 30));
 		this.add("Center", result);
 		
@@ -72,10 +72,6 @@ public class QuizSwing_11 extends JFrame implements ActionListener {
 			panel.add(btn[i]);
 			
 		}
-		
-		
-		
-		
 		
 	}
 

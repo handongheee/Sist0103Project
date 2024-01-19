@@ -1,0 +1,30 @@
+package day0119;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class CheckRadio_03 extends JFrame{
+
+	Container cp;
+
+	public CheckRadio_03(String title) {
+		super(title);
+
+		cp = this.getContentPane();
+
+		this.setBounds(500, 500, 500, 400);
+		cp.setBackground(new Color(255, 255, 200));
+
+
+
+		this.setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
