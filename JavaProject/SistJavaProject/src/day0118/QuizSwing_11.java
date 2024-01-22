@@ -53,7 +53,7 @@ public class QuizSwing_11 extends JFrame implements ActionListener {
 		panel.setBackground(Color.pink);
 		this.add(panel, BorderLayout.NORTH);
 		
-		result = new JLabel("안녕하세요"); // JLabel.CENTER
+		result = new JLabel("안녕하세요", JLabel.CENTER); 
 		result.setFont(new FontUIResource("", Font.BOLD, 30));
 		this.add("Center", result);
 		
@@ -74,12 +74,7 @@ public class QuizSwing_11 extends JFrame implements ActionListener {
 		}
 		
 	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new QuizSwing_11();
-	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -87,14 +82,17 @@ public class QuizSwing_11 extends JFrame implements ActionListener {
 		
 		for(int i=0; i<btn.length; i++) {
 			if(ob==btn[i]) {
-				
-				cp.setForeground(btnColors[i]);
-				
-				//this.setTitle("Color: "+btnLabel[i]);	
-				
+				result.setForeground(btnColors[i]);
 			}		
 		}
 		
 	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new QuizSwing_11();
+	}
+
+
 
 }
