@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="day0117.MyShopList_07"/>
     <fullyQualifiedTypeName name="day0118.SwingGibon_01"/>
     <fullyQualifiedTypeName name="java.awt.Container"/>
     <fullyQualifiedTypeName name="day0118.SwingStart"/>
@@ -24,11 +22,9 @@
     <fullyQualifiedTypeName name="day0119.SwingLabelRandom_01"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="javax.swing.ButtonGroup"/>
-    <fullyQualifiedTypeName name="javax.swing.JRadioButton"/>
     <fullyQualifiedTypeName name="javax.swing.border.TitledBorder"/>
     <fullyQualifiedTypeName name="javax.swing.JPanel"/>
     <fullyQualifiedTypeName name="day0119.SwingRadioCheck_02"/>
-    <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="java.awt.Panel"/>
     <fullyQualifiedTypeName name="day0119.CheckRadio_03"/>
     <fullyQualifiedTypeName name="day0119.SwingTable_04.TableEvent"/>
@@ -48,16 +44,20 @@
     <fullyQualifiedTypeName name="day0119.FileDialog_06"/>
     <fullyQualifiedTypeName name="java.awt.FileDialog"/>
     <fullyQualifiedTypeName name="java.io.FileWriter"/>
-    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="day0119.Combo_07"/>
-    <fullyQualifiedTypeName name="javax.swing.JCheckBox"/>
     <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
     <fullyQualifiedTypeName name="javax.swing.JTextField"/>
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
-    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
     <fullyQualifiedTypeName name="javax.swing.border.LineBorder"/>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
-    <fullyQualifiedTypeName name="java.awt.event.ItemListener"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="day0119.Quiz_08"/>
+    <fullyQualifiedTypeName name="javax.swing.JRadioButton"/>
+    <fullyQualifiedTypeName name="javax.swing.JCheckBox"/>
+    <fullyQualifiedTypeName name="java.awt.Color"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="java.lang.Iterable"/>
+    <fullyQualifiedTypeName name="java.awt.event.ItemListener"/>
 </qualifiedTypeNameHistroy>
