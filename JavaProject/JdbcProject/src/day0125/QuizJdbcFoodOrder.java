@@ -35,7 +35,7 @@ public class QuizJdbcFoodOrder {
 				String shoploc=rs.getString("shoploc");
 				String order_addr=rs.getString("order_addr");
 				
-				System.out.println(order_num+"\t"+pno+"\t"+order_name+"\t"+fname+"\t"+price+"\t"+fshopname+"\t"+shoploc+"\t-"+order_addr);
+				System.out.println(order_num+"\t"+pno+"\t"+order_name+"\t"+fname+"\t"+price+"\t"+fshopname+"\t"+shoploc+"\t"+order_addr);
 					
 			}
 			
