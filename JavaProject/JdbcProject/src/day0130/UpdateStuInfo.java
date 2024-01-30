@@ -9,24 +9,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class AddStuInfo extends JFrame{
+public class UpdateStuInfo extends JFrame{
 	
 	Container cp=new Container();
 	JTextField tfName, tfJava, tfJsp, tfSpring;
 	JComboBox<String> cbBan;
-	JButton btnAdd; // 데이터 추가 버튼 
+	JButton btnMod; // 데이터 수정 버튼 modify
+	String num; // 수정할 번호
 	
-	public AddStuInfo(String title) {
+	public UpdateStuInfo(String title) {
 		super(title);
 		
 		cp = this.getContentPane();
 		this.setBounds(700, 400, 200, 250); 
-		cp.setBackground(new Color(255, 255, 200));
+		cp.setBackground(new Color(255, 204, 204));
 		
 		initDesign();
 		
-		// 이거를 막아야 메인창에서 자동으로 안뜸, addForm.setVisible(true); 기호출
-		//this.setVisible(true); 
+		//this.setVisible(true); // 이거를 막아야 메인창에서 자동으로 안뜸, addForm.setVisible(true); 기호출
 	}
 	
 	// 디자인
@@ -51,7 +51,7 @@ public class AddStuInfo extends JFrame{
 		String [] ban= {"aws반","front반","backend반","design반"};
 		cbBan=new JComboBox<String>(ban);
 		
-		btnAdd=new JButton("추가");
+		btnMod=new JButton("수정");
 		
 		// ------- 추가
 		// 텍스트필드 제목 추가 - 라벨 5개 
@@ -87,13 +87,13 @@ public class AddStuInfo extends JFrame{
 		this.add(tfSpring);
 		
 		// 버튼 추가
-		btnAdd.setBounds(70, 170, 70, 30);
-		this.add(btnAdd);
+		btnMod.setBounds(70, 170, 70, 30);
+		this.add(btnMod);
 		
 	}
 	
 //	public static void main(String[] args) {
-//		new AddStuInfo("학생 정보 추가 프레임");
+//		new UpdateStuInfo("학생 정보 수정창");
 //	}
 
 }
