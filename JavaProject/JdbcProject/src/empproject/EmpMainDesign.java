@@ -19,8 +19,7 @@ import javax.swing.JPanel;
 
 import oracleDB.DbConnect;
 
-
-//제일 처음으로 나오는 화면(main메서드 여기에 존재)
+// 제일 처음으로 나오는 화면(main메서드 여기에 존재)
 public class EmpMainDesign extends JFrame implements ActionListener{
 
 	DbConnect db=new DbConnect();
@@ -40,7 +39,7 @@ public class EmpMainDesign extends JFrame implements ActionListener{
 		layeredPane.setLayout(null);
 		
 		try {
-			img=ImageIO.read(new File("C:\\sist0103\\image\\project\\emp_image.jpg"));
+			img=ImageIO.read(new File("C:\\sist0103\\image\\project\\city.jpg"));
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "이미지 불러오기 실패");
 			System.exit(0);
@@ -65,9 +64,7 @@ public class EmpMainDesign extends JFrame implements ActionListener{
 	public void initDesign()
 	{
 		this.setLayout(null);
-		
-		
-		
+
 		connbtn = new JButton("실행");
 		Font customFont = new Font("바탕체",Font.BOLD, 26);
 		
@@ -78,33 +75,26 @@ public class EmpMainDesign extends JFrame implements ActionListener{
 		this.add(connbtn);
 	}
 
-	
 	class myPanel extends JPanel{
 		@Override
 		public void paint(Graphics g) {
-			// TODO Auto-generated method stub
 			g.drawImage(img, 0, 0, null);
 		}
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		Object ob = e.getSource();
 		
 		if(ob==connbtn) {
 			EmpMain add = new EmpMain("");
 			em.setVisible(true);
-			this.setVisible(false);
-			
+			this.setVisible(false);	
 		}
 		
 	}
    
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 		new EmpMainDesign();
 	}
     
