@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .table{
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 700px;
+    }
+
+    .table td, .table th{
+        border: 1px solid black;
+    }
+
+    .table th{
+        background-color: silver;
+    }
+    .li{
+        margin-bottom: 5px;
+    }
+</style>
+<body>
+    <h2 style="margin-left: 350px;">이력서</h2>
+    <ul>
+        <li class="li"><b>인적사항</b></li>
+        <table class="table">
+            <tr>
+                <td rowspan="4" width="100"><img src="../image/만화이미지/01.png" width="100"></td>
+                <th width="100">성명</th>
+                <td width="300">홍길동</td>
+            </tr>
+            <tr>
+                <th>이메일</th>
+                <td>hong@gmail.com</td>
+            </tr>
+            <tr>
+                <th>휴대폰</th>
+                <td>010-1234-1234</td>
+            </tr>
+            <tr height="80">
+                <th>주소</th>
+                <td>서울시 중구</td>
+            </tr>
+        </table>
+    </ul>
+
+    <ul>
+        <li class="li"><b>학력사항</b></li>
+        <table class="table">
+            <tr>
+                <th>기간</th>
+                <th>학교명</th>
+                <th>전공(학과)</th>
+            </tr>
+            <tr>
+                <td width="200">2020.03.01~2024.02.01</td>
+                <td>가나다대학교</td>
+                <td>컴퓨터공학과</td>
+            </tr>
+            <tr>
+                <td>2017.03.01~2020.02.01</td>
+                <td>가나고등학교</td>
+                <td></td>
+            </tr>
+        </table>
+    </ul>
+
+    <ul>
+        <li class="li"><b>경력사항</b></li>
+        <table class="table">
+            <tr>
+                <th>기간</th>
+                <th>회사명</th>
+                <th>부서</th>
+                <th>직위</th>
+            </tr>
+            <tr>
+                <td width="200">2020.05.10~2023.08.28</td>
+                <td>쌍용교육센터</td>
+                <td>개발팀</td>
+                <td>사원</td>
+            </tr>
+            <tr>
+                <td>2016.11.04~2019.12.16</td>
+                <td>abc건설</td>
+                <td>인사팀</td>
+                <td>대리</td>
+            </tr>        
+        </table>
+
+    </ul>
+
+    <ul>
+        <li class="li"><b>어학능력</b></li>
+        <table class="table"> 
+            <tr>
+                <th rowspan="2" width="100">어학</th>
+                <th width="130">TOEIC</th>
+                <td width="100"> 123점</td>
+                <th width="130">일본어</th>
+                <td> 123점</td>
+            </tr>
+            <tr>
+                <th>TOEFL</th>
+                <td width="100"> 123점</td>
+                <th>중국어</th>
+                <td width="100"> 123점</td>
+            </tr>
+        </table>
+    </ul>
+
+    <ul>
+        <li class="li"><b>자격증</b></li>
+        <table class="table">
+            <tr>
+                <th>취득연월일</th>
+                <th>자격 사항</th>
+                <th>발령청</th>
+            </tr>
+
+            <tr>
+                <td>2023.08.01</td>
+                <td>정보처리기사</td>
+                <td>한국산업인력공단</td>
+            </tr>
+
+            <tr>
+                <td>2022.10.15</td>
+                <td>SQLD</td>
+                <td>한국데이터산업진흥원</td>
+            </tr>
+        </table>
+    </ul>
+
+    <ul>
+        <li class="li"><B>신상자료</B></li>
+        <table class="table">
+            <tr>
+                <th>최종학력</th>
+                <td width="100">대졸</td>
+                <th>결혼여부</th>
+                <td>결혼( )/미혼(O)</td>
+                <th>종교</th>
+                <td width="100">무교</td>
+            </tr>
+            <tr>
+                <th>신장</th>
+                <td> 111cm</td>
+                <th>체중</th>
+                <td> 11kg</td>
+                <th>혈액형</th>
+                <td>A</td>
+            </tr>
+
+            <tr>
+                <th>시력</th>
+                <td>2.0/2.0</td>
+                <th>특기</th>
+                <td>-</td>
+                <th>취미</th>
+                <td>-</td>
+            </tr>
+
+        </table>
+    </ul>
+
+    <ul>
+        <li class="li"><b>병역 및 보훈사항</b></li>
+        <table class="table">
+            <tr>
+                <th>군별</th>
+                <td>육군( ) 해군( ) 공군( ) 기타(O)</td>
+                <th>병역</th>
+                <td>필(O) 미필( ) 면제( )</td>
+            </tr>
+
+            <tr>
+                <th>계급</th>
+                <td>-</td>
+                <th rowspan="3">병역내용</th>
+                <td rowspan="3">-</td>
+            </tr>
+
+            <tr>
+                <th>복무기간</th>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <th>보훈대상</th>
+                <td>보훈대상( ) 보훈비대상(O)</td>
+            </tr>
+        </table>
+    </ul>
+
+    <ul>
+        <li class="li"><B>가족사항</B></li>
+        <table class="table">
+            <tr>
+                <th width="40">구분</th>
+                <th>관계</th>
+                <th>성명</th>
+                <th>연령</th>
+                <th>최종학력</th>
+                <th>직업</th>
+            </tr>
+
+            <tr>
+                <th>1</th>
+                <td>부</td>
+                <td>홍자바</td>
+                <td>11</td>
+                <td>대학교 졸업</td>
+                <td>직장인</td>
+            </tr>
+
+            <tr>
+                <th>2</th>
+                <td>모</td>
+                <td>오라클</td>
+                <td>22</td>
+                <td>대학교 졸업</td>
+                <td>직장인</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>형제</td>
+                <td>홍퀴즈</td>
+                <td>33</td>
+                <td>대학교 졸업</td>
+                <td>학생</td>
+            </tr>
+        </table>
+    </ul>
+    
+</body>
+</html>
