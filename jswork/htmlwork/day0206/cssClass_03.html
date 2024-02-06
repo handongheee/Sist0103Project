@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .style1{
+            color: blue;
+            border: solid 5px #486fdb;
+            height: 100px;
+        }
+
+        div.style2{
+            width: 500px;
+            text-align: center; /*가로 가운데*/
+            line-height: 100px; /*세로 가운데*/
+            margin-left: 100px;
+            margin-top: 50px;
+            font-size: 1.5em;
+            font-weight: bold; /*font-weight: 글씨 굵기 속성*/
+            font-family: 'Comic sans MS', 'Impact';
+            text-decoration: line-through; /*line-through: 취소선*/
+        }
+
+        /*-------------------DivTag_02 에 로또처럼 디자인 주기-------------------*/
+        div.style3{
+            margin-left: 100px;
+            margin-top: 30px;
+            border: 3px solid #3c4466; /* border: 굵기 선모양 색상 */
+            background-color: #486fdb;
+            border-radius: 100px;
+            width: 100px;
+            height: 100px;
+            font-size: 2em;
+            text-align: center;
+            line-height: 100px;
+            font-family: Comic Sans MS;
+            font-weight: bold;
+            color: aliceblue;
+            box-shadow: 5px 5px 5px gray;
+        }
+    </style>
+</head>
+<body>
+    <span class="style1">Span Tag_01 !!</span> <!--span은 height 적용 안됨-->
+    <span class="style2">Span Tag_02 !!</span>
+    <div class="style1 style2">DivTag_01</div>
+    
+    <!--DivTag_02-->
+    <div class="style3">17</div> 
+</body>
+</html>

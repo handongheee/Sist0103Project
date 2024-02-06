@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+        }
+
+        /* float 속성은 left/right/none. 중심 속성 없다, 중심으로 분리시키고자 할 땐 margin에 auto로 적용 */
+        #boxa{
+            float: left;
+            background-color: aquamarine;
+        }
+
+        #boxb{
+            background-color: bisque;
+            float: right;
+        }
+
+        #boxc{
+            background-color: yellowgreen;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="boxa">박스 A</div>
+    <div id="boxb">박스 B</div>
+    <div id="boxc">박스 C</div>
+</body>
+</html>
