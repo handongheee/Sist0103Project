@@ -70,13 +70,44 @@
 
     <h2>Q. 배열 출력</h2>
     <script>
-        var colors=['pink','magenta','cyan','gray','blue','orange'];
+        var colors = ['pink', 'magenta', 'cyan', 'gray', 'blue', 'orange'];
 
         // h2태그로 배열 문자열을 해당 색으로 출력하자
-        for(var i=0; i<colors.length; i++){
-            document.write("<h2 style='color: "+colors[i]+" '>"+colors[i]+"</h2>");
+        for (var i = 0; i < colors.length; i++) {
+            document.write("<h2 style='color: " + colors[i] + "; '>" + colors[i] + "</h2>");
         }
-        
+    </script>
+
+    <h2>배열 요소에 추가 삭제</h2>
+    <script>
+        var foods = new Array();
+
+        foods.push("햄버거"); // 배열 마지막에 요소 추가, == foods[0]="햄버거"
+        foods.push("스테이크");
+        foods.push("파스타");
+
+        for (var i = 0; i < foods.length; i++) {
+            document.write("<h3>" + foods[i] + "</h3>");
+        }
+
+        document.write("---------------------<br>")
+        foods.pop(); // 마지막 배열 값 제거
+        // foods.pop();
+        for (var i = 0; i < foods.length; i++) {
+            document.write("<h3>" + foods[i] + "</h3>");
+        }
+
+        document.write("---------------------<br>")
+
+        foods.shift(); // 배열의 첫번째 요소 제거
+        foods.unshift(); // 배열의 첫번째 요소 추가
+
+        console.log(foods); // 콘솔에 출력
+        // for (var i = 0; i < foods.length; i++) {
+        //     document.write("<h3>" + foods[i] + "</h3>");
+        // }
+
+
     </script>
 
 </body>
