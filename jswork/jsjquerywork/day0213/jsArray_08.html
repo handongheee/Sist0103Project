@@ -46,7 +46,6 @@
 
         for (var i = 0; i < imgArr1.length; i++) {
             s += "<img src='" + imgArr1[i] + "'> ";
-
         }
         document.write(s);
 
@@ -62,12 +61,12 @@
         imgArr2[2] = '../image/logoimg/acc03.png';
         imgArr2[3] = '../image/logoimg/icon04.png';
 
-        var cnt = "배열개수: " + imgArr2.length + "<br>";
+        var s = "배열개수: " + imgArr2.length + "<br>";
 
         for (var i = 0; i < imgArr2.length; i++) {
-            var s = "<img src='" + imgArr2[i] + "'> ";
-            document.write(s);
+            s += "<img src='" + imgArr2[i] + "'> ";
         }
+        document.write(s);
     </script>
 
     <h2>배열_new Array()로 지정 후 출력_push로 5개 삽입 후 출력</h2>
@@ -80,39 +79,23 @@
         imgArr3.push('../image/logoimg/icon04.png');
         imgArr3.push('../image/Food/6.jpg');
 
+        var s = "배열개수: " + imgArr3.length + "<br>";
         for (var i = 0; i < imgArr3.length; i++) {
-            var s = "<img src='" + imgArr3[i] + "'>";
-            document.write(s);
+            s += "<img src='" + imgArr3[i] + "'>";
         }
-
-        // document.write("<h2>위 예제에서 마지막 이미지 2개 지우고 다시 출력</h2>");
-        // imgArr3.pop();
-        // imgArr3.pop();
-
-        // for (var i = 0; i < imgArr3.length; i++) {
-        //     var s = "<img src='" + imgArr3[i] + "'>";
-        //     document.write(s);
-        // }
+        document.write(s);
     </script>
 
     <h2>위 예제에서 마지막 이미지 2개 지우고 다시 출력</h2>
     <script>
-
-        var imgArr3 = new Array();
-
-        imgArr3.push('../image/만화이미지/02.png');
-        imgArr3.push('../image/Food/3.jpg');
-        imgArr3.push('../image/logoimg/acc03.png');
-        imgArr3.push('../image/logoimg/icon04.png');
-        imgArr3.push('../image/Food/6.jpg');
-
         imgArr3.pop();
         imgArr3.pop();
 
+        var s = "배열개수: " + imgArr3.length + "<br>";
         for (var i = 0; i < imgArr3.length; i++) {
-            var s = "<img src='" + imgArr3[i] + "'>";
-            document.write(s);
+            s += "<img src='" + imgArr3[i] + "'>";
         }
+        document.write(s);
     </script>
 
 </body>

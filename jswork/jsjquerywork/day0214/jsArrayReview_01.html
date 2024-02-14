@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복습01</title>
+</head>
+
+<body>
+    <h3>Array(3)으로 생성 후 각 배열에 이미지 넣고 반복 출력_2가지 방법</h3>
+    <script>
+        var arr1 = new Array(3);
+
+        arr1[0] = "../image/만화이미지/08.png";
+        arr1[1] = "../image/만화이미지/09.png";
+        arr1[2] = "../image/만화이미지/10.png";
+
+        // 출력 for
+        for (var i = 0; i < arr1.length; i++) {
+            var img = "<img src=  '" + arr1[i] + "'  >";
+            document.write(img);
+        }
+
+        // for of
+        document.write("<br><b>방법 #02</b><br>")
+        for (n of arr1) {
+            var img = "<img src=  '" + n + "'  >";
+            document.write(img);
+        }
+    </script>
+
+    <h3>Array() 생성 후 이미지 넣고 출력_push로 넣고 of문 출력</h3>
+    <script>
+        var arr2 = new Array();
+        arr2.push("../image/만화이미지/15.png");
+        arr2.push("../image/만화이미지/16.png");
+        arr2.push("../image/만화이미지/17.png");
+
+        for (var a of arr2) {
+            var img = "<img src=  '" + a + "'  >";
+            document.write(img);
+        }
+    </script>
+
+    <h3>위의 변수로 pop 한번 실행 후 다시 출력</h3>
+    <script>
+        arr2.pop();
+
+        for (var b of arr2) {
+            var img = "<img src='" + b + "'>";
+            document.write(img);
+        }
+    </script>
+
+
+</body>
+
+</html>
