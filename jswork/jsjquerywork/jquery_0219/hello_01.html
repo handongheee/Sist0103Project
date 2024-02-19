@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- jquery 라이브러리 -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <!-- 
+        css(속성): 해당 요소의 속성에 대한 값 반환
+        css(속성, 값): 속성을 해당 값으로 변경
+        @(Selector): $안에 접근을 위한 요소값을 Selector라고 한다
+
+     -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+
+    <script>
+        // - jquery 사용 시 window.onload 역할_#01, 복잡해서 거의 사용x
+        // $(document).ready(function){
+        // }
+
+        // - jquery 사용 시 window.onload 역할_#02
+
+        $(function () {
+            // css:스타일변경/반환
+            // 방법 01
+            $("#good").css("color", "red");
+            $("#good").css("background-color", "yellow"); // background-color, backgroundColor 둘다 가능(하이픈, 낙타표기법)
+
+            // 방법 02 - 연속 css 호출 가능
+            $("#good").css("color", "blue").css("backgroundColor", "gray");
+
+            // 방법 03 - style변경할 항목이 많은 경우(오브젝트 방식)
+            $("#good").css({
+                "color": "magenta",
+                "backgroundColor": "cyan",
+                "width": "300px",
+                "border": "2px solid green"
+            });
+
+            // Selector가 2군데 이상 존재해도 동시적용
+            $("div.hello>div").css({
+                "font-size": "2em",
+                "color": "green",
+                "font-weight": "bold"
+            });
+
+            // #good 의 배경색을 div.hello의 color 배경색으로 적용
+            // var goodBg=$("#good").css("background-color");
+            // $("div.hello").css("background-color", goodBg);
+
+            // 한줄로 ===================================================================
+            $("div.hello").css("background-color", $("#good").css("background-color"));
+
+            // body태그 아래 모든 태그 글꼴 변경
+            $("body").css("font-family", "Dongle").css("font-size", "30px");
+
+            // class bts div 속성, 위치 변경
+            $("div.bts").css({
+                "position": "absolute",
+                "left": "300px",
+                "top": "1200px",
+                "width": "300px",
+                "height": "150px",
+                "border": "10px inset gold"
+            });
+
+            // 모든 b태그 글자색 변경
+            $("b").css("color", "magenta");
+
+            // b태그 중에서 1,2,3번 인덱스만 변경
+            $("b:eq(1)").css("backgroundColor", "orange"); // 방법01
+            $("b").eq(2).css("backgroundColor", "orange"); // 방법02
+
+            // 전체 b태그 중에서 첫번째, 마지막 border 변경
+            $("b:first").css("border", "4px solid red"); // b:first==b:eq(0)
+            $("b:last").css("border", "4px dotted purple");
+
+            // gt(3): 3번 이후, lt(3): 3번 이전
+            $("b:gt(1)").css("font-size", "50px"); // 2번 인덱스부터 모두 변경
+            $("b:lt(1)").css("backgroundColor", "gray"); // 0번만 변경
+
+            // 첫번째 이미지 width값 200으로 변경
+            $("div.bts>div>img").css("width", "200px");
+            // border 주기
+            $("img:eq(0)").css("border", "4px dotted gray");
+
+
+
+        })
+    </script>
+
+</head>
+
+<body>
+    <h2 id="good">h2 id good</h2>
+    <h3 class="good2">h3 class good2</h3>
+
+    <div class="hello">
+        div class hello
+        <div>
+            div hello 아래 div
+        </div>
+    </div>
+
+    <div class="bts">
+        <b>div bts 아래 b태그</b> <!-- 0번 -->
+        <span>div bts 아래 span태그</span>
+        <div>div bts 아래 div
+            <img src="../image/logoImg/a03.png">
+        </div>
+    </div>
+
+    <div class="hello">
+        div 두번째 class hello
+        <img src="../image/Food/1.jpg">
+        <div>div hello 아래 div</div>
+
+    </div>
+    <b>단독 b태그 #01</b> <!-- 1번 -->
+    <b>단독 b태그 #02</b> <!-- 2번 -->
+    <b>단독 b태그 #03</b> <!-- 3번 -->
+
+</body>
+
+</html>
