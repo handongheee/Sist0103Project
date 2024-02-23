@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>영화관</title>
+    <style>
+        button {
+            width: 130px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-family: 'Noto Sans KR';
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        button.btna {
+            background-color: lightpink;
+            color: blue;
+        }
+
+        button.btnb {
+            background-color: lightyellow;
+            color: gray;
+        }
+
+        div {
+            position: absolute;
+            width: 400px;
+            height: 300px;
+            font-size: 20px;
+            font-family: Gowun Dodum;
+        }
+
+        #one {
+            left: 200px;
+            top: 100px;
+            border: 0px solid green;
+        }
+
+        #two {
+            left: 500px;
+            top: 100px;
+            border: 0px solid green;
+        }
+
+        #three {
+            left: 1000px;
+            top: 100px;
+            border: 0px solid green;
+        }
+
+        #four {
+            left: 1200px;
+            top: 100px;
+            border: 0px solid green;
+        }
+
+        #movieResult {
+            left: 400px;
+            top: 500px;
+            font-size: 2em;
+            width: 1000px;
+            height: 300px;
+            border-radius: 30px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 3px solid purple;
+        }
+
+        #three h3:hover {
+            cursor: pointer;
+            background-color: lightblue;
+        }
+    </style>
+    <script>
+        $(function () {
+            // 전역변수 생성
+            var theater = "", movie = "", time = "", inwon = "";
+
+            // #div one에 버튼
+            var b1 = "<button type='button' id='btn1' class='btnb'>영화예매</button>";
+            $("#one").append(b1);
+
+            // 버튼1에 대한 이벤트
+            $("#btn1").click(function () {
+                var b2 = "<button type='button' id='btn2' class='btna'>극장선택</button>"
+                b2 += "&nbsp;<button type='button' id='btn3' class='btnb'>영화선택</button>"
+                $("#two").html(b2);
+            });
+
+            // 버튼2 이벤트는 나중에 동적생성이므로 onMethod
+            $(document).on("click", "#btn2", function () {
+                var s = "";
+                s += "<h3 class='theater'>CGV 강남점</h3>"
+                s += "<h3 class='theater'>CGV 왕십리점</h3>"
+                s += "<h3 class='theater'>메가박스 코엑스점</h3>"
+                s += "<h3 class='theater'>롯데시네마 월드타워점</h3>"
+                s += "<h3 class='theater'>롯데시네마 건대입구점</h3>"
+
+                $("#three").html(s);
+            });
+
+            // 버튼3 이벤트
+            $(document).on("click", "#btn3", function () {
+                var s = "";
+                s += "<h3 class='movie'>파묘</h3>";
+                s += "<h3 class='movie'>듄:파트2</h3>";
+                s += "<h3 class='movie'>웡카</h3>";
+
+                $("#three").html(s);
+            });
+
+            // 영화관, 영화제목 클릭 시 이벤트
+            $(document).on("click", "#three>h3", function () {
+                // 클릭한 h3에서 class속성을 얻는다
+                var movieSelect = $(this).attr("class");
+
+                if (movieSelect == 'theater') {
+                    theater = "극장명: " + $(this).text();
+                } else {
+                    // 시간
+                    var times = ["09:00", "10:30", "12:30", "15:40", "17:50", "20:00", "23:30"];
+
+                    var t = "";
+                    $.each(times, function (i, ele) {
+                        t += "<input type='radio' name='time' value='" + times[i] + "'>" + times[i] + "<br>";
+                    });
+                    movie = "영화제목: " + $(this).text();
+
+                    // 인원수
+                    t += "<input type='number' min='1' max='5' value='0' id='inwon'>";
+
+                    $("#four").html(t);
+                }
+                $("#movieResult").html(theater + "<br>" + movie);
+
+            });
+
+            // 시간
+            $(document).on("click","input[name='time']", function(){
+                time="상영시간: "+$(this).val();
+                $("#movieResult").html(theater+"<br>"+movie+"<br>"+time);
+            });
+            // 인원
+            $(document).on("change","#inwon", function(){
+                inwon="인원수: "+$(this).val();
+                $("#movieResult").html(theater+"<br>"+movie+"<br>"+time+"<br>"+inwon);
+            });
+
+            /*
+            // 라디오버튼 선택 시 이벤트
+            $(document).on("click", "#four", function () {
+                time = "시간: " + $("input[name='time']:checked").val();
+                //console.log(time);
+
+                // 인원 변경 시 이벤트
+                inwon = "인원: " + $("input[id='inwon']").val()+"명"; 
+                //console.log(inwon);
+
+                $("#movieResult").html(theater + "<br>" + movie + "<br>" + time + "<br>" + inwon);
+            });
+            */
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+    <div id="movieResult"></div>
+</body>
+
+</html>
