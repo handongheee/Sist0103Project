@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 디렉티브:html 태그 안에서 v 접두어 가지는 모든 속성 -->
+        <!-- v-bind 생략 가능 :id -->
+        <b v-bind:id="uid">Have a Nice Day!!</b>
+        <br>
+        <b v-if="flag">{{msg}}</b>
+        <br>
+        <!-- v-if, v-show 둘이 비슷함 -->
+        <p v-show="flag">지금 flag는 true입니다</p>
+
+        <!-- for문-item in items -->
+        <ul>
+            <li v-for="sys in systems">{{sys}}</li>
+        </ul>
+
+        <!-- 클릭 이벤트 -->
+        <!-- <button type="button" v-on:click="popupAlert">경고창</button> -->
+        <button type="button" @click="popupAlert">경고창</button><br>
+
+        <!-- 부트스트랩 -->
+        <button type="button" class="btn btn-info" v-on:click="eventFunc1(200)">버튼 이벤트 연습_#01</button>
+        <button type="button" class="btn btn-danger" v-on:click="eventFunc2('Happy',200)">버튼 이벤트 연습_#02</button>
+        <button type="button" class="btn btn-warning" v-on:click="eventFunc3()">버튼 이벤트 연습_#03</button>
+        <br>
+
+        <!-- 클릭이벤트 -->
+        <button type="button" @click="counter++">Counter: {{counter}}</button>
+
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    uid: "hello", // 바인딩
+                    flag: true,
+                    msg: "재미있는 뷰 수업",
+                    systems: ['ios', 'aos', 'web'],
+                    counter: 0
+                }
+            },
+
+            methods: {
+                popupAlert() {
+                    return alert("뷰 경고창 테스트");
+                },
+                eventFunc1(num) {
+                    return alert('클릭이벤트 발생 시 값 전달 01: ' + num);
+                },
+                eventFunc2(str, num) {
+                    return alert('클릭이벤트 발생 시 값 전달 02: ' + num + ":" + str);
+                },
+                eventFunc3(e) {
+                    return alert('그냥 경고창 03');
+                }
+            }
+
+
+        })
+
+        app.mount("#app")
+    </script>
+
+    <style>
+        #hello {
+            color: blue;
+        }
+    </style>
+</body>
+
+</html>

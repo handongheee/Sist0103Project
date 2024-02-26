@@ -25,9 +25,9 @@
                 $("#myModal").modal("show");
 
                 // 제목
-                var title = $(this).text();
+                var title = $(this).text(); // 속성 가져오기
                 //console.log(title);
-                $(".modal-title").text(title);
+                $(".modal-title").text(title); // 속성 적용
 
                 // 작성자
                 var name = $(this).attr("writer");
