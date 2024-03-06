@@ -13,13 +13,16 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="dao" class=introduce.model.introduceDao></jsp:useBean>
-<jsp:useBean id="dto" class=introduce.model.introduceDto></jsp:useBean>
+<jsp:useBean id="dao" class="introduce.model.introduceDao"></jsp:useBean>
+<jsp:useBean id="dto" class="introduce.model.introduceDto"></jsp:useBean>
 
 <jsp:setProperty property="*" name="dto"/>
 
 <%
-	//String hobby=request.getParameter("hobby");
+	String hobby=request.getParameter("hobby");
+	dto.setHobby(hobby);
+	dao.insertIntroduce(dto);
+
 	response.sendRedirect("introduceList.jsp");
 %>
 </body>
