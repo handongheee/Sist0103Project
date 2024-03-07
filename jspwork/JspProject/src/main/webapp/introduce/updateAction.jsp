@@ -10,5 +10,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<jsp:useBean id="dao" class="introduce.model.introduceDao"/>
+<jsp:useBean id="dto" class="introduce.model.introduceDto"/>
+<jsp:getProperty property="*" name="dto"/>
 </body>
 </html>

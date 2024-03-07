@@ -111,7 +111,30 @@ public class introduceDao {
 	}
 	
 	// 수정(나이, 생년월일, 거주지, 취미, 성격)
+	public void updateIntroduce(introduceDto dto) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update introduce set age=?, birthday=?, hometown=?, hobby=?, memo=? where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getAge());
+			pstmt.setString(2, dto.getBirthday());
+			pstmt.setString(3, dto.getHometown());
+			pstmt.setString(4, dto.getHobby());
+			pstmt.setString(5, dto.getMemo());
+			pstmt.setString(6, dto.getNum());
 	
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
 	
 	// 삭제 (해당 num db 삭제)
 	public void deleteIntroduce(String num) {
