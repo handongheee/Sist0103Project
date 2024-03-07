@@ -39,10 +39,10 @@
 				<th>거주지역</th>
 				<td>
 					<label><input type="radio" name="hometown" value="서울" checked="checked">서울</label>
-					<label><input type="radio" name="hometown" value="서울">경기</label>
-					<label><input type="radio" name="hometown" value="서울">인천</label>
-					<label><input type="radio" name="hometown" value="서울">강원</label>
-					<label><input type="radio" name="hometown" value="서울">대구</label>
+					<label><input type="radio" name="hometown" value="경기">경기</label>
+					<label><input type="radio" name="hometown" value="인천">인천</label>
+					<label><input type="radio" name="hometown" value="강원">강원</label>
+					<label><input type="radio" name="hometown" value="대구">대구</label>
 				</td>
 			</tr>
 			

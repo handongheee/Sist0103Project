@@ -11,18 +11,34 @@
 </head>
 <body>
 <%
+	// post니 엔코딩
 	request.setCharacterEncoding("utf-8");
 %>
-<jsp:useBean id="dao" class="introduce.model.introduceDao"></jsp:useBean>
-<jsp:useBean id="dto" class="introduce.model.introduceDto"></jsp:useBean>
+<jsp:useBean id="dao" class="introduce.model.introduceDao"/>
+<jsp:useBean id="dto" class="introduce.model.introduceDto"/>
 
+<!-- 한번에 dto 주입 -->
 <jsp:setProperty property="*" name="dto"/>
 
 <%
-	String hobby=request.getParameter("hobby");
-	dto.setHobby(hobby);
+	String []hobby=request.getParameterValues("hobby"); // 배열형태로 선언
+	String myhobby="";
+	
+	if(hobby==null){
+		myhobby="no"; // myhobby=null; 
+	} else{
+		for(int i=0; i<hobby.length; i++){
+			myhobby+=hobby[i]+",";
+		}
+		myhobby=myhobby.substring(0, myhobby.length()-1); // 마지막 , 제거
+	}
+	
+	// dto에 hobby 담기
+	dto.setHobby(myhobby);
+	// dao에 insert
 	dao.insertIntroduce(dto);
-
+	
+	// 리스트로
 	response.sendRedirect("introduceList.jsp");
 %>
 </body>
