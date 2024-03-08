@@ -1,5 +1,4 @@
-<%@page import="myworld.model.WorldDto"%>
-<%@page import="myworld.model.WorldDao"%>
+<%@page import="simpleguest.model.GuestDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,23 +12,11 @@
 </head>
 <body>
 <%
-	WorldDao dao=new WorldDao();
+	GuestDao dao=new GuestDao();
+	String num=request.getParameter("num");
+	dao.deleteGuest(num);
 	
-	request.setCharacterEncoding("utf-8");
-	
-	// 데이터 읽기 writer, content, avata만
-	String writer=request.getParameter("writer");
-	String content=request.getParameter("content");
-	String avata=request.getParameter("avata");
-	
-	// dto로 묶어서 ~
-	WorldDto dto=new WorldDto();
-	dto.setWriter(writer);
-	dto.setContent(content);
-	dto.setAvata(avata);
-	
-	// ~ insert에 넣기
-	dao.insertWorld(dto);
+	response.sendRedirect("guestList.jsp");
 %>
 </body>
 </html>

@@ -113,7 +113,7 @@ public class WorldDao {
 		}				
 	}
 	
-	// 조회
+	// 전체조회
 	public List<WorldDto> getAllMyWorld() {
 		List<WorldDto> list=new Vector<WorldDto>();
 		
