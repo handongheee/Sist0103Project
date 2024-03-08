@@ -89,8 +89,8 @@ public class WorldDao {
 
 	DbConnect db=new DbConnect();
 	
-	public void insertWorld(WorldDto dto)
-	{
+	// 추가
+	public void insertWorld(WorldDto dto) {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -110,14 +110,11 @@ public class WorldDao {
 			e.printStackTrace();
 		}finally {
 			db.dbClose(pstmt, conn);
-		}
-		
-				
+		}				
 	}
 	
-	
-	public List<WorldDto> getAllMyWorld()
-	{
+	// 조회
+	public List<WorldDto> getAllMyWorld() {
 		List<WorldDto> list=new Vector<WorldDto>();
 		
 		Connection conn=db.getConnection();
@@ -153,4 +150,80 @@ public class WorldDao {
 		return list;
 	}
 	
+	// 삭제
+	public void deleteWorld(String num) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="delete from myworld where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num); // 바인딩
+			pstmt.execute(); // 실행
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
+	
+	// num에 해당하는 dto 반환 - 해당하는 데이터 띄워주기 위함
+	public WorldDto getData(String num) {
+		WorldDto dto=new WorldDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from myworld where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setNum(rs.getString("num"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setContent(rs.getString("content"));
+				dto.setAvata(rs.getString("avata"));
+				dto.setWriteday(rs.getTimestamp("writeday"));	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}		
+		return dto;
+	}
+	
+	// 수정
+	public void updateWorld (WorldDto dto) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update myworld set writer=?, content=?, avata=? where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			// 바인딩
+			pstmt.setString(1, dto.getWriter());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getAvata());
+			pstmt.setString(4, dto.getNum());
+			
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
 }

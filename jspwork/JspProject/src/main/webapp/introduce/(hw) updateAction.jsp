@@ -1,6 +1,3 @@
-
-<%@page import="myworld.model.WorldDto"%>
-<%@page import="myworld.model.WorldDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,23 +11,13 @@
 </head>
 <body>
 <%
-	WorldDao dao=new WorldDao();
-	
 	request.setCharacterEncoding("utf-8");
-	
-	// 데이터 읽기 writer, content, avata만
-	String writer=request.getParameter("writer");
-	String content=request.getParameter("content");
-	String avata=request.getParameter("avata");
-	
-	// dto로 묶어서 ~
-	WorldDto dto=new WorldDto();
-	dto.setWriter(writer);
-	dto.setContent(content);
-	dto.setAvata(avata);
-	
-	// ~ insert에 넣기
-	dao.insertWorld(dto);
 %>
+<jsp:useBean id="dao" class="introduce.model.introduceDao"/>
+<jsp:useBean id="dto" class="introduce.model.introduceDto"/>
+<jsp:getProperty property="*" name="dto"/>
+
+
+
 </body>
 </html>

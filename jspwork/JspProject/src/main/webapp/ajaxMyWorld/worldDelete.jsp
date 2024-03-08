@@ -1,3 +1,5 @@
+<%@page import="myworld.model.WorldDao"%>
+<%@page import="myworld.model.WorldDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,10 +13,11 @@
 </head>
 <body>
 <%
-	request.setCharacterEncoding("utf-8");
+	WorldDao dao=new WorldDao();
+	
+	String num=request.getParameter("num");
+
+	dao.deleteWorld(num);
 %>
-<jsp:useBean id="dao" class="introduce.model.introduceDao"/>
-<jsp:useBean id="dto" class="introduce.model.introduceDto"/>
-<jsp:getProperty property="*" name="dto"/>
 </body>
 </html>
