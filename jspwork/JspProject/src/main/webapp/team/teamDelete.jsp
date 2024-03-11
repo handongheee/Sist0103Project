@@ -16,8 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-	// ================================================================================
+	<%	
 		// num
 		String num=request.getParameter("num");
 		

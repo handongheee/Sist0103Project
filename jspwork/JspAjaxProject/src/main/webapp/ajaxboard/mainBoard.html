@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+	div.list, div.detail, .updateform{
+		position: absolute;
+		left:100px;
+		top:100px;
+		border: 0px solid gray;
+	}
+	
+	div.writeform{
+		position: absolute;
+		left:850px;
+		top:100px;
+		border: 0px solid gray;
+	}
+	
+	div.list *, div.writeform, div.detail *, div.updateform{
+		font-family: 'Noto Sans KR';
+		font-size: 13pt;
+	}
+	span.detail{
+		cursor:pointer;
+	}
+	
+	div.detail button{
+		width:80px;
+		margin-right: 10px;
+	}
+
+</style>
+
+<script type="text/javascript">
+	$(function(){
+		list();
+		
+		// 입력폼 처음에는 안보이게
+		$(".writeform").hide();
+		$(".updateform").hide();
+		
+		// 글쓰기 버튼 누르면 보이게
+		$("#btnwrite").click(function(){
+			$(".writeform").toggle();
+		});
+		
+		// insert
+		$("#btninsert").click(function(){
+			var writer = $("#writer").val();
+			var subject = $("#subject").val();
+			var avata = $("#avata").val();
+			var content = $("#content").val();
+			//console.log(wri,sub,ava,con);
+			
+			// 방법 01 -> data:data
+			//var data="writer="+writer+"&subject="+subject+"&content="+content+"&avata="+avata;
+			
+			$.ajax({
+				type:"post",
+				dataType:"html",
+				url:"insertBoard.jsp",
+				// data:data, ==> 방법 01
+				// 방법 02
+				data:{"writer":writer, "subject":subject, "content":content, "avata":avata}, 
+				success:function(){
+					// insert 성공 시 폼 초기화
+					$("#writer").val("");
+					$("#subject").val("");
+					$("#content").val("");
+					
+					list(); // 게시글 추가하면 리스트에 바로 업데이트
+					
+					// 입력폼 사라지게
+					$("div.writeform").hide();			
+				}	
+			});
+		});
+		
+		// 제목누르면 리스트 숨고 디테일페이지 나타나고 디테일페이지: json으로 받은 데이타 출력 _ 목록,삭제버튼 추가
+		// 제목 클릭 시 내용보기
+		$(document).on("click", "span.detail", function(){
+			// span 태그에 넣어둔 num 가져오기
+			var num=$(this).attr("num"); 
+			//alert(num); // num 뜨는거 확인하고 진행
+			
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				data:{"num":num},
+				url:"detailBoard.jsp",
+				success:function(data){ // detail에서 넘어오는 data
+					// alert(data.writer);
+					var s="<table class='table table-bordered' style='width:500px;'>";
+					s+="<caption align='top'><b>디테일 페이지 내용 보기</b></caption>";
+					s+="<tr class='table-input'>";
+					s+="<td><b style='font-size: 1.8em;'>"+data.subject+"</b>";
+					s+="<span style='float:right; color:gray'>"+data.writeday+"</span>";
+					s+="<br>"+data.writer+"</td></tr>";
+					s+="<tr><Td>";
+					s+="<img src='"+data.avata+"' align='left' hspace='20'>";
+					s+="<pre>"+data.content+"</pre></td></tr>";
+					
+					// 버튼들
+					s+="<tr><td>";
+					s+="<button type='button' class='btn btn-success btn-sm btnlist'>목록</button>";
+					s+="<button type='button' class='btn btn-info btn-sm btnupdate' num='"+data.num+"'>수정</button>";
+					s+="<button type='button' class='btn btn-warning btn-sm btndelete' num='"+data.num+"'>삭제</button>";
+					s+="</td></tr></table>";
+					
+					// 출력
+					$("div.detail").html(s);
+					
+					// list 숨기고 detail 출력하기
+					$("div.list").hide();
+					$("div.detail").show();
+				}
+			});
+
+		});
+		
+		// 목록버튼 누르면 상세보기 사라지고 목록 나오기
+		$(document).on("click", "button.btnlist", function(){
+			//alert("click");
+			$("div.detail").hide();
+			$("div.list").show();
+		});
+		
+		// 삭제버튼 누르면 삭제 후 상세보기 사라지고 목록 보이게하기
+		$(document).on("click", ".btndelete", function(){
+			//alert("click");
+			var num=$(this).attr("num");
+			//alert(num);
+					
+			$.ajax({
+				type:"get",
+				dataType:"html",
+				data:{"num":num},
+				url:"deleteBoard.jsp",
+				success:function(data){
+					list(); // 목록 다시 호출
+					$("div.detail").hide(); // 상세보기 사라지게
+					$("div.list").show(); // 목록 보이게			
+				}		
+			});
+		});
+		
+		// 수정
+		$(document).on("click", ".btnupdate", function(){
+			$("div.detail").hide();
+			$(".updateform").show();
+			
+			var num=$(this).attr("num");
+			//alert(num);
+			$("#unum").val(num);
+			
+			$.ajax({
+				type:"post",
+				dataType:"json",
+				data:{"num":num},
+				url:"detailBoard.jsp",
+				success:function(res){
+					$("#unum").val(res.num);
+					$("#uwriter").val(res.writer);
+					$("#usubject").val(res.subject);
+					$("#ucontent").val(res.content);
+				}				
+			});		
+		})
+		
+		// DB 수정하기 버튼
+		$("#btnupdate").click(function(){
+			var num=$("#unum").val();
+			var writer = $("#uwriter").val();
+			var subject = $("#usubject").val();
+			var avata = $("#uavata").val();
+			var content = $("#ucontent").val();
+			//alert(writer);
+			$.ajax({
+				type:"get",
+				dataType:"html",
+				data:{"unum":num, "uwriter":writer, "usubject":subject, "uavata":avata, "ucontent":content},
+				url:"updateBoard.jsp",
+				success:function(){
+					list();
+					$("div.updateform").hide(); // 상세보기 사라지게
+					$("div.list").show(); // 목록 보이게	
+				}
+			})
+		
+		})
+	});
+	
+	// list 호출하므로 밖에다 생성
+	function list(){
+		// 번호	제목	작성자	작성일
+		$.ajax({
+			type:"get",
+			dataType:"json",
+			url:"listBoard.jsp",
+			success:function(data){
+				var s="<table class='table table-bordered' style='width:700px;'>";
+				s+="<caption align='top'><b>Ajax 게시판 목록</b></caption>";
+				s+="<tr class='table-primary'>";
+				s+="<th width='80'>번호</th>";
+				s+="<th width='350'>제목</th>";
+				s+="<th width='180'>작성자</th>";
+				s+="<th width='180'>작성일</th>";
+				s+="</tr>";
+				
+				if(data.length==0){
+					s+="<tr>";
+					s+="<td colspan='4' align='center'>";
+					s+="<b>저장된 글이 없습니다</b>";
+					s+="</td></tr>";
+				} else{
+					// 데이터가 1개 이상 있는 경우
+					$.each(data,function(i,ele){
+						s+="<tr>";
+						s+="<td align='center'>"+(i+1)+"</td>";
+						s+="<td>";
+						s+="<span num='"+ele.num+"' class='detail'>"+ele.subject+"</span>";
+						s+="</td>";
+						s+="<td>"+ele.writer+"</td>";
+						s+="<td>"+ele.writeday+"</td></tr>";
+						
+					});	
+				}
+				s+="</table>";
+				$("#boardlist").html(s);			
+			}		
+		});	
+	}
+
+</script>
+</head>
+
+<body>
+<div class="list">
+	<button type="button" class="btn btn-info" id="btnwrite">글쓰기</button>
+	<div id="boardlist">list</div>
+</div>
+
+<div class="detail"></div>
+
+<div class="writeform" style="width:400px">
+	<form action="#">
+		<table class="table table-bordered">
+			<caption align="top"><b>게시글 추가</b></caption>
+			<tr>
+				<th class="table-primary">작성자</th>
+				<td>
+					<input type="text" id="writer" style="width:120px;" class="form-control">
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="table-primary">제목</th>
+				<td>
+					<input type="text" id="subject" style="width:270px;" class="form-control">
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="table-primary">아바타</th>
+				<td>
+					<select id="avata" class="form-control" style="width:100px;">
+						<option value="../image/avata/b1.png">사랑</option>
+						<option value="../image/avata/b8.png">최고</option>
+						<option value="../image/avata/b7.png">신남</option>
+						<option value="../image/avata/b6.png">좌절</option>
+						<option value="../image/avata/b5.png">배고파</option>
+						<option value="../image/avata/b2.png">심심</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<textarea style="width:380px; height:100px;" id="content" class="form-control"></textarea>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<button type="button" class="btn btn-danger" id="btninsert">DB 추가</button>
+				</td>
+			</tr>		
+		</table>	
+	</form>
+</div>
+
+<div class="updateform" style="width:400px">
+	<form action="#" name="updatefrm">
+		<table class="table table-bordered">
+		<input type="hidden" id="unum" name="unum" value="">
+			<caption align="top"><b>게시글 수정</b></caption>
+			<tr>
+				<th class="table-primary">작성자</th>
+				<td>
+					<input type="text" id="uwriter" style="width:120px;" class="form-control">
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="table-primary">제목</th>
+				<td>
+					<input type="text" id="usubject" style="width:270px;" class="form-control">
+				</td>
+			</tr>
+			
+			<tr>
+				<th class="table-primary">아바타</th>
+				<td>
+					<select id="uavata" class="form-control" style="width:100px;">
+						<option value="../image/avata/b1.png">사랑</option>
+						<option value="../image/avata/b8.png">최고</option>
+						<option value="../image/avata/b7.png">신남</option>
+						<option value="../image/avata/b6.png">좌절</option>
+						<option value="../image/avata/b5.png">배고파</option>
+						<option value="../image/avata/b2.png">심심</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<textarea style="width:380px; height:100px;" id="ucontent" class="form-control"></textarea>
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<button type="button" class="btn btn-danger" id="btnupdate">DB 수정</button>
+				</td>
+			</tr>		
+		</table>	
+	</form>
+</div>
+
+</body>
+</html>

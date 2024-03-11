@@ -19,7 +19,7 @@
 %>
 <body>
 	<div style="margin:30px 50px;">
-		<form action="addAction.jsp" method="post">
+		<form action="updateAction.jsp" method="post">
 		
 		<input type="hidden" name="num" value=<%=num %>>
 			<table class="table table-bordered" style="width:300px">
