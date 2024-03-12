@@ -91,7 +91,7 @@
 			<tr>
 				<th width="100" class="table-info">생년월일</th>
 				<td>
-					<input type="date" name="birth" required="required" value="<%=dto.getBirth() %>" class="form-control" style="width:150px">
+					<input type="date" name="birth" required="required" value=<%=dto.getBirth() %> class="form-control" style="width:150px">
 				</td>
 			</tr>
 			

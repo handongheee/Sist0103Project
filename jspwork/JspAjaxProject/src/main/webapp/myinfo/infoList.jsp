@@ -24,9 +24,7 @@
 <%
 	MyInfoDao dao=new MyInfoDao();
 	List<MyInfoDto> list=dao.getAllInfos();
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
-	
-	
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");	
 %>
 <body>
 	<div style="margin:50px 100px; width:1000px">
