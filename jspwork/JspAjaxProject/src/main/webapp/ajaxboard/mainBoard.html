@@ -46,7 +46,8 @@
 		
 		// 입력폼 처음에는 안보이게
 		$(".writeform").hide();
-		$(".updateform").hide();
+		// 수정폼 처음에는 안보이게
+		$(".updateform").hide(); 
 		
 		// 글쓰기 버튼 누르면 보이게
 		$("#btnwrite").click(function(){
@@ -153,45 +154,63 @@
 			});
 		});
 		
-		// 수정
+		// 디테일페이지에서 수정버튼 누르면 수정폼 가져오기
 		$(document).on("click", ".btnupdate", function(){
-			$("div.detail").hide();
-			$(".updateform").show();
+			//$("div.detail").hide();
+			//$(".updateform").show();
 			
 			var num=$(this).attr("num");
 			//alert(num);
 			$("#unum").val(num);
 			
+			// 수정폼 출력
 			$.ajax({
 				type:"post",
 				dataType:"json",
 				data:{"num":num},
 				url:"detailBoard.jsp",
 				success:function(res){
+					// 수정폼에 데이터 넣어주기
 					$("#unum").val(res.num);
 					$("#uwriter").val(res.writer);
 					$("#usubject").val(res.subject);
 					$("#ucontent").val(res.content);
+					
+					// 디테일 페이지 안보이게
+					$("div.detail").hide();
+					// 수정폼 보이게
+					$(".updateform").show();
 				}				
 			});		
 		})
 		
-		// DB 수정하기 버튼
+		// DB 수정하기 버튼누르면 최종 수정
 		$("#btnupdate").click(function(){
+			// 값 한번에 얻어오기
+			/*
+			var data=$("#updatefrm").serialize();
+			alert(data);
+			*/
+			
+			// 각각 얻어오기 (방법01)
 			var num=$("#unum").val();
 			var writer = $("#uwriter").val();
 			var subject = $("#usubject").val();
 			var avata = $("#uavata").val();
 			var content = $("#ucontent").val();
 			//alert(writer);
+			
 			$.ajax({
 				type:"get",
 				dataType:"html",
+				// 방법01
 				data:{"unum":num, "uwriter":writer, "usubject":subject, "uavata":avata, "ucontent":content},
+				//data:data, // 방법02
 				url:"updateBoard.jsp",
 				success:function(){
+					// 수정했으니 list 호출
 					list();
-					$("div.updateform").hide(); // 상세보기 사라지게
+					$("div.updateform").hide(); // 수정폼 사라지게
 					$("div.list").show(); // 목록 보이게	
 				}
 			})
@@ -251,6 +270,7 @@
 
 <div class="detail"></div>
 
+<!-- writeform -->
 <div class="writeform" style="width:400px">
 	<form action="#">
 		<table class="table table-bordered">
@@ -298,6 +318,7 @@
 	</form>
 </div>
 
+<!-- updateform -->
 <div class="updateform" style="width:400px">
 	<form action="#" name="updatefrm">
 		<table class="table table-bordered">
@@ -306,21 +327,21 @@
 			<tr>
 				<th class="table-primary">작성자</th>
 				<td>
-					<input type="text" id="uwriter" style="width:120px;" class="form-control">
+					<input type="text" id="uwriter" name="uwriter" style="width:120px;" class="form-control">
 				</td>
 			</tr>
 			
 			<tr>
 				<th class="table-primary">제목</th>
 				<td>
-					<input type="text" id="usubject" style="width:270px;" class="form-control">
+					<input type="text" id="usubject" name="usubject" style="width:270px;" class="form-control">
 				</td>
 			</tr>
 			
 			<tr>
 				<th class="table-primary">아바타</th>
 				<td>
-					<select id="uavata" class="form-control" style="width:100px;">
+					<select id="uavata" name="uavata" class="form-control" style="width:100px;">
 						<option value="../image/avata/b1.png">사랑</option>
 						<option value="../image/avata/b8.png">최고</option>
 						<option value="../image/avata/b7.png">신남</option>
@@ -333,7 +354,7 @@
 			
 			<tr>
 				<td colspan="2">
-					<textarea style="width:380px; height:100px;" id="ucontent" class="form-control"></textarea>
+					<textarea style="width:380px; height:100px;" id="ucontent" name="ucontent" class="form-control"></textarea>
 				</td>
 			</tr>
 			

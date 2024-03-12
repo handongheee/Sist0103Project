@@ -11,13 +11,16 @@
 	String avata=request.getParameter("uavata");
 	String content=request.getParameter("ucontent");
 	
-	AjaxBoardDto dto=new AjaxBoardDto();
+	// dto 선언
+	AjaxBoardDto dto=new AjaxBoardDto(); 
+	// dto에 수정폼에서 전달받은 값들 set
 	dto.setNum(num);
 	dto.setWriter(writer);
 	dto.setSubject(subject);
 	dto.setAvata(avata);
 	dto.setContent(content);
 	
-	AjaxBoardDao dao=new AjaxBoardDao();
-	dao.updateBoard(dto);
+	// dao 선언
+	AjaxBoardDao dao=new AjaxBoardDao(); 
+	dao.updateBoard(dto); // 재정비한 dto값 넣어줌
 %>
