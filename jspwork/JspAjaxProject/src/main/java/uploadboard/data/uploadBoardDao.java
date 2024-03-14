@@ -145,7 +145,62 @@ public class uploadBoardDao {
 		} finally {
 			db.dbClose(pstmt, conn);
 		}
+	}
+	
+	// 수정할때 num과 pass 받아서 비번이 같으면 true, 틀리면 false 반환
+	public boolean isEqualPass(String num, String pass) {
+		boolean b=false;
 		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		// count(*) - 맞으면 1, 틀리면 0 반환하는 sql문
+		String sql="select count(*) from uploadboard where num=? and pass=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			pstmt.setString(2, pass);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				// 1(비밀번호가 맞으면)이면 true 반환
+				if(rs.getInt(1)==1) {
+					b=true;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}		
+		return b;
+	}
+	
+	// 수정
+	public void updateUploadBoard (uploadBoardDto dto) {
+		// subject, content, imgname만 수정
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update uploadboard set subject=?, content=?, imgname=? where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getSubject());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setString(3, dto.getImgname());
+			pstmt.setString(4, dto.getNum());
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
 	}
 	
 	

@@ -48,8 +48,8 @@
 	
 	<button type="button" class="btn btn-info" onclick="location.href='boardList.jsp'">목록으로</button>
 	<button type="button" class="btn btn-success" onclick="location.href='addForm.jsp'">추가</button>
-	<button type="button" class="btn btn-danger" onclick="location.href='deleteAction.jsp?num=<%=dto.getNum()%>'">삭제</button>
-	<button type="button" class="btn btn-warning" onclick="location.href=''">수정</button>
+	<button type="button" class="btn btn-danger" onclick="location.href='deleteForm.jsp?num=<%=dto.getNum()%>'">삭제</button>
+	<button type="button" class="btn btn-warning" onclick="location.href='updateForm.jsp?num=<%=dto.getNum()%>'">수정</button>
 	
 </div>
 
