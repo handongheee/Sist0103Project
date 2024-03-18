@@ -47,7 +47,8 @@
 		
 		list();
 		
-		// ajax insert	
+		// ajax 
+		// insert 댓글 추가
 		var num=$("#num").val();
 		//alert(num);
 		
@@ -81,8 +82,7 @@
 			});	
 		});
 		
-		
-		// 리스트의 삭제버튼 클릭 시
+		// delete 리스트의 삭제버튼 클릭 시
 		$(document).on("click","i.adel", function(){
 			var idx=$(this).attr("idx");
 			//alert(idx);
@@ -101,6 +101,59 @@
 				});
 			}
 		});
+		
+		// 댓글 글자 누르면 댓글 작성창 나오게
+		$("b.acount").click(function(){
+			$("div.aupdateform").hide();
+			$("div.aform").toggle();
+		});
+		
+		// 일단 수정 댓글창 안보이게
+		$("div.aupdateform").hide();
+		
+		// getData 댓글 리스트에 수정 아이콘 누르면 수정 댓글창에 해당 idx의 내용 출력
+		$(document).on("click", ".amod", function(){
+			$("div.aform").hide();
+			$("div.aupdateform").show();
+			
+			var idx=$(this).attr("idx");
+			//alert(idx);
+			$("#idx").val(idx);
+			
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				url:"../simpleboardanswer/oneDataAnswer.jsp",
+				data:{"idx":idx},
+				success:function(res){
+					$("#idx").val(res.idx);
+					$("#unickname").val(res.nick);
+					$("#ucontent").val(res.content);
+				}
+			});
+		});
+		
+		// update 수정
+		$("#ubtnsend").click(function(){
+			var idx=$("#idx").val();
+			var nick=$("#unickname").val();
+			var content=$("#ucontent").val();
+			//alert(idx+", "+nick+", "+content);
+			
+			$.ajax({
+				type:"get",
+				url:"../simpleboardanswer/updateAnswer.jsp",
+				dataType:"html",
+				data:{"idx":idx, "nickname":nick, "content":content},
+				success:function(){
+					//alert("수정");
+					list();
+					$("div.aupdateform").hide();
+					$("div.aform").show();
+				}
+			});
+		});
+		
 
 	})
 	
@@ -116,12 +169,13 @@
 				// 댓글 개수 출력
 				$("b.acount>span").text(res.length);
 				
+				// 댓글 리스트
 				var s="";
 				$.each(res, function(idx, item){
 					s+="<div>"+item.nick+" : "+item.content;
 					s+="<span class='aday'>"+item.writeday+"</span>";
 					s+="<i class='bi bi-x-square adel' idx='"+item.idx+"'></i> &nbsp;";
-					s+="<i class='bi bi-pencil-square amod'></i>";
+					s+="<i class='bi bi-pencil-square amod' idx="+item.idx+"></i>";
 				});
 				$("div.alist").html(s);
 			}
@@ -169,9 +223,12 @@
 		<tr>
 			<td>
 				<b class="acount">댓글 <span>0</span></b>
-				<div class="alist">
+				<!-- 바로 댓글목록으로 화면 포커스하려면 id 값 줘야 됨 -->
+				<div class="alist" id="alist">
 					댓글목록
 				</div>
+				
+				<!-- 댓글 작성폼 -->
 				<div class="aform input-group">
 					
 					<input type="text" id="nickname" class="form-control" style="width:80px;" placeholder="닉네임">
@@ -179,6 +236,18 @@
 					
 					<button type="button" id="btnsend" class="btn btn-info btn-sm" style="margin-left:7px;">저장</button>		
 				</div>
+				
+				<!-- 댓글 수정폼 -->
+				<div class="aupdateform input-group">
+					
+					<input type="hidden" id="idx">
+					
+					<input type="text" id="unickname" class="form-control" style="width:80px;" placeholder="닉네임">
+					<input type="text" id="ucontent" class="form-control" style="width:300px; margin-left:5px;" placeholder="댓글메세지">	
+					
+					<button type="button" id="ubtnsend" class="btn btn-warning btn-sm" style="margin-left:7px;">수정</button>		
+				</div>
+				
 			</td>
 		</tr>
 		<!--  -->

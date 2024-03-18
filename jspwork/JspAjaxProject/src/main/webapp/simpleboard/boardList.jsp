@@ -1,3 +1,4 @@
+<%@page import="simpleboardAnswer.model.SimpleAnswerDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="simpleboard.model.SimpleBoardDto"%>
 <%@page import="java.util.List"%>
@@ -31,7 +32,7 @@
 <%
 	SimpleBoardDao dao=new SimpleBoardDao();
 
-	// * 페이지
+	// * 페이지 ----------------------------------------------------------------------
 	// 전체 개수
 	int totalCount=dao.getTotalCount();
 	int perPage=3; // 한페이지당 보여질 글의 개수
@@ -82,6 +83,19 @@
 	//List<SimpleBoardDto> list=dao.getAllDatas();
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	//int count=list.size();
+	
+	
+	// * 댓글
+	// list의 각 dto에 댓글 개수 저장해두기
+	SimpleAnswerDao adao=new SimpleAnswerDao(); // 댓글 dao
+	
+	// list는 simpleboard list(model)
+	for(SimpleBoardDto dto:list) {
+		// 댓글변수에 댓글의 총 개수 넣기
+		int acount=adao.getAnswerList(dto.getNum()).size(); // 댓글 개수를 acount
+		dto.setAnswercount(acount); 
+	}
+	
 %>
 <body>
 <div style="margin:50px 100px; width:800px;">
@@ -111,7 +125,17 @@
 					%>
 					<tr>
 						<td align="center"><%=no-- %></td>
-						<td><a href="contentView.jsp?num=<%=dto.getNum()%>" style="text-decoration:none; color:black"><%=dto.getSubject() %></a></td>
+						<td><a href="contentView.jsp?num=<%=dto.getNum()%>" style="text-decoration:none; color:black"><%=dto.getSubject() %></a>
+							
+							<!-- 댓글 개수 출력 -->
+							<%
+								// 댓글 개수가 0보다 많으면 출력
+								if(dto.getAnswercount()>0){%>
+									<!-- #alist : 댓글목록으로 포커스 -->
+									<a href="contentView.jsp?num=<%=dto.getNum()%> &currentPage=<%=currentPage %> #alist" style="color:red;">[<%=dto.getAnswercount() %>]</a>
+								<%}
+							%>
+						</td>
 						<td><%=dto.getWriter() %></td>
 						<td><%=sdf.format(dto.getWriteday()) %></td>
 						<td align="center"><%=dto.getReadcount() %></td>
