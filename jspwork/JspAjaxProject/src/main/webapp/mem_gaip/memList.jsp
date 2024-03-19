@@ -46,14 +46,14 @@
 						<td align="center" valign="middle"><%=i++ %></td>
 						<td valign="middle"><%=dto.getM_id() %></td>
 						<td valign="middle">
-							<img alt="" src="<%=dto.getM_photo()%>"class="rounded-circle" style="width:35px; height:35px;">
+							<img alt="" src="<%=dto.getM_photo()%>" class="rounded-circle" style="width:35px; height:35px;">
 							<b><%=dto.getM_name() %></b>
 						</td>
 						<td valign="middle"><%=dto.getM_hp() %></td>
 						<td valign="middle"><%=sdf.format(dto.getGaipday()) %></td>
 						<td valign="middle">
 							<button type="button" class="btn btn-danger btn-sm" onclick="location.href='deletePassForm.jsp?num=<%=dto.getM_num()%>'">삭제</button>
-							<button type="button" class="btn btn-success btn-sm" onclick="location.href=''">수정</button>
+							<button type="button" class="btn btn-success btn-sm" onclick="location.href='updatePassForm.jsp?num=<%=dto.getM_num()%>'">수정</button>
 						</td>
 					</tr>
 					

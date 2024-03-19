@@ -1,5 +1,5 @@
-<%@page import="mem_gaip.model.MemgaipDto"%>
 <%@page import="mem_gaip.model.MemgaipDao"%>
+<%@page import="mem_gaip.model.MemgaipDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%
@@ -10,8 +10,7 @@
 	boolean p=dao.isEqualPass(num, pass);
 	
 	if(p){
-		dao.deleteMemgaip(num);
-		response.sendRedirect("memList.jsp");
+		response.sendRedirect("updateForm.jsp?num="+num);
 	} else{
 	%>
 		<script>
@@ -21,3 +20,4 @@
 	<%
 	}
 %>
+   
