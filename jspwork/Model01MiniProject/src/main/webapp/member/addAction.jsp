@@ -14,7 +14,6 @@
 	request.setCharacterEncoding("utf-8");
 	String email=request.getParameter("email01")+"@"+request.getParameter("email02");
 	String id=request.getParameter("id");
-	String name=request.getParameter("name");
 %>
 <jsp:useBean id="dao" class="data.dao.memberDao"/>
 <jsp:useBean id="dto" class="data.dto.memberDto"/>
@@ -23,11 +22,9 @@
 	dto.setEmail(email);	
 	dao.insertMember(dto);
 	
-	//dao.isNameCheck(id);
-	
 	// 일단 리스트로 -> gaipSuccess로 바꿀 예정
 	//response.sendRedirect("../index.jsp?main=member/memberList.jsp");
-	response.sendRedirect("../index.jsp?main=member/gaipSuccess.jsp&name=" + name);
+	response.sendRedirect("../index.jsp?main=member/gaipSuccess.jsp?id=" + id);
 %>
 </body>
 </html>

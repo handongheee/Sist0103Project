@@ -1,3 +1,5 @@
+<%@page import="data.dto.memberDto"%>
+<%@page import="data.dao.memberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,9 +12,19 @@
 <title>Insert title here</title>
 </head>
 <%
-	String name=request.getParameter("name");
+	String id=request.getParameter("id");
+	
+	memberDao dao=new memberDao();
+	String name=dao.getName(id);
 %>
 <body>
-	<h4><%=name %>님 가입되셨습니다.</h4>
+	<div style="margin:100px 100px;">
+		<img alt="" src="image/logo.png" style="width:400px;"><br><br>
+		<b><%=name %> 님의 회원가입을 축하합니다!</b>
+		<br><br>
+		<button type="button" class="btn btn-danger" onclick="location.href='index.jsp?main=login/loginMain.jsp'">로그인</button>
+		<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=member/myPage.jsp'">마이페이지</button>
+	</div>
+	
 </body>
 </html>

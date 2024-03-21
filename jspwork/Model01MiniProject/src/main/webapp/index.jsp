@@ -41,7 +41,7 @@
 		font-family: 'Noto Sans KR';
 		left:50px;
 		top:300px;
-		border: 5px groove purple;
+		border: 5px groove black;
 		border-radius: 30px;
 		padding: 20px 20px;
 	}
@@ -49,7 +49,7 @@
 	div.main{
 		width:1200px;
 		height: 700px;
-		font-size: 15pt;
+		font-size: 13pt;
 		font-family: 'Noto Sans KR';
 		border: 0px groove purple;
 		left: 300px;

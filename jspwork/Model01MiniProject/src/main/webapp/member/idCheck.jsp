@@ -5,9 +5,9 @@
 <%
 	String id=request.getParameter("id");
 	memberDao dao=new memberDao();
-	int count=dao.isIdCheck(id);
+	int count=dao.isIdCheck(id); // 존재하면 1 반환
 	
 	JSONObject ob=new JSONObject();
-	ob.put("count", count);
+	ob.put("count", count); 
 %>
 <%=ob.toString()%>
