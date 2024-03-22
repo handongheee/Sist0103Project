@@ -44,7 +44,6 @@ public class memberDao {
 		return isid;
 	}
 	
-	
 	// insert
 	public void insertMember(memberDto dto) {
 		Connection conn=db.getConnection();
@@ -222,6 +221,62 @@ public class memberDao {
 		return b;
 	}
 	
+	// 하나의 데이터 반환
+	public memberDto getDataMember(String num) {
+		memberDto dto=new memberDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from member where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, num);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setNum(rs.getString("num"));
+				dto.setName(rs.getString("name"));
+				dto.setId(rs.getString("id"));
+				dto.setPass(rs.getString("pass"));
+				dto.setHp(rs.getString("hp"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setEmail(rs.getString("email"));
+				dto.setGaipday(rs.getTimestamp("gaipday"));	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
+	// update
+	public void updateMember(memberDto dto) {
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update member set name=?, hp=?, addr=?, email=? where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getHp());
+			pstmt.setString(3, dto.getAddr());
+			pstmt.setString(4, dto.getEmail());
+			pstmt.setString(5, dto.getNum());
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
 	
 	
 	

@@ -6,6 +6,10 @@
 <%
 	// 프로젝트 경로 (절대경로)
 	String root=request.getContextPath();
+
+	// 아이디, 로그인유무 세션 가져오기
+	String myid=(String)session.getAttribute("myid");
+	String loginok=(String)session.getAttribute("loginok");
 %>
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,16 +47,24 @@
 					<li class="parent">
 						<a href="#">게시판</a>
 						<ul class="sub-menu">
-							<li><a href="#"><i class="icon-wrench"></i> 고객게시판</a></li>
+							<li><a href="index.jsp?main=memberGuest/guestForm.jsp"><i class="icon-wrench"></i> 회원방명록</a></li>
 							<li><a href="#"><i class="icon-credit-card"></i> 이미지게시판</a></li>
 							<li><a href="#"><i class="icon-gift"></i> 스마트게시판</a></li>	
 						</ul>
 					</li>
 					<li>
-						<a href="#">로그인</a>
+						<a href="#">회원</a>
 						<ul class="sub-menu">
 							<li><a href="index.jsp?main=member/addForm.jsp"><i class="icon-wrench"></i> 회원가입</a></li>
-							<li><a href="index.jsp?main=member/memberList.jsp"><i class="icon-credit-card"></i> 회원목록</a></li>
+							
+							<%
+								// 로그인 되어있고, 관리자 계정이면 회원목록 출력되게
+								if(loginok!=null && myid.equals("admin")){%>
+									<li><a href="index.jsp?main=member/memberList.jsp"><i class="icon-credit-card"></i> 회원목록</a></li>
+								<%}
+							%>
+							
+							
 							<li><a href="index.jsp?main=member/myPage.jsp"><i class="icon-gift"></i> 마이페이지</a></li>
 							<li><a href="index.jsp?main=login/loginMain.jsp"><i class="icon-gift"></i> 로그인</a></li>
 						</ul>

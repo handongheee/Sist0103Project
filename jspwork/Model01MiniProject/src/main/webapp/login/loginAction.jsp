@@ -24,9 +24,9 @@
 		session.setMaxInactiveInterval(60*60*8); // 8시간 세션 유지, 생략 시 디폴트 30분
 		
 		// 세션 생성
-		session.setAttribute("loginok", "yes");
-		session.setAttribute("myid", id);
-		session.setAttribute("saveok", cbSave==null?null:"yes");
+		session.setAttribute("loginok", "yes"); // 로그인유무
+		session.setAttribute("myid", id); // 아이디
+		session.setAttribute("saveok", cbSave==null?null:"yes"); // 보안로그인
 		
 		response.sendRedirect("../index.jsp?main=login/loginMain.jsp");
 	} else{

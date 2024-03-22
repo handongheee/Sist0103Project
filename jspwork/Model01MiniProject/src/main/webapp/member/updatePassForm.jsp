@@ -1,5 +1,3 @@
-<%@page import="data.dto.memberDto"%>
-<%@page import="data.dao.memberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,19 +10,19 @@
 <title>Insert title here</title>
 </head>
 <%
-	String id=request.getParameter("id");
-	
-	memberDao dao=new memberDao();
-	String name=dao.getName(id);
+	String num=request.getParameter("num");
 %>
 <body>
-	<div style="margin:100px 100px;">
-		<img alt="" src="image/logo.png" style="width:400px;"><br><br>
-		<b><%=name %> 님의 회원가입을 축하합니다!</b>
-		<br><br>
-		<button type="button" class="btn btn-danger" onclick="location.href='index.jsp?main=login/loginMain.jsp'">로그인</button>
-		<button type="button" class="btn btn-success" onclick="location.href='index.jsp'">메인</button>
+<div style="margin:100px 150px; width:300px;">
+		<form action="member/updatePassAction.jsp" method="post">
+			<div>
+				<b style="width:100px;">비밀번호 입력</b> <br>
+				<input type="password" class="form-control" required="required" name="pass" style="width:150px;">
+				<input type="hidden" name="num" value="<%=num%>">
+			</div>
+			<br>
+			<button type="submit" class="btn btn-warning" style="margin-left:50px">수정</button>
+		</form>	
 	</div>
-	
 </body>
 </html>
