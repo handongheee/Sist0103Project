@@ -1,3 +1,7 @@
+<%@page import="data.dao.guestDao"%>
+<%@page import="data.dto.guestDto"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,5 +14,42 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	// 아이디 세션값 가져오기
+	String myid=(String)session.getAttribute("myid");
+	
+	// 이미지 저장 경로 가져오기
+	String realPath=getServletContext().getRealPath("/save");
+	System.out.println(realPath);
+	
+	int uploadSize=1024*1024*3; // 이미지 업로드 사이즈 3mb
+	
+	MultipartRequest multi=null;
+	
+	try{
+		multi=new MultipartRequest(request, realPath, uploadSize, "utf-8", new DefaultFileRenamePolicy());	
+		String content=multi.getParameter("content"); // content 
+		String photoname=multi.getFilesystemName("photo"); // photoname 경로명
+		
+		// dto 에 저장
+		guestDto dto=new guestDto();
+		dto.setMyid(myid);
+		dto.setContent(content);
+		dto.setPhotoname(photoname);
+		
+		// dao 메서드 호출
+		guestDao dao=new guestDao();
+		dao.insertGuest(dto);
+		
+		// 방명록 목록으로 이동 guestList
+		response.sendRedirect("../index.jsp?main=memberGuest/guestList.jsp");
+	} catch(Exception e){
+		
+	}
+	
+	
+	
+%>
+
 </body>
 </html>

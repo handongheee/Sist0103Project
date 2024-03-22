@@ -42,8 +42,8 @@
 		<table class="table table-bodered">
 			<caption align="top">
 				<b>방명록 등록</b>
-				<i class="bi bi-camera-fill camera"></i>
-				<input type="file" name="photo" id="photo" style="visibility: hidden;">
+				<i class="bi bi-camera-fill fs-2 camera"></i>
+				<input type="file" name="photo" id="photo" style="visibility: hidden;" onchange="readURL(this)">
 			</caption>
 			
 			<tr>
@@ -53,6 +53,9 @@
 				
 				<td>
 					<button type="submit" class="btn btn-success" style="width:100px; height:100px;">등록</button>
+					
+					<!-- 이미지 미리보기 -->
+					<img alt="" src="" id="preshow" style="position: absolute; left:800px; top:100px; max-width:200px;">
 				</td>
 				
 			</tr>
