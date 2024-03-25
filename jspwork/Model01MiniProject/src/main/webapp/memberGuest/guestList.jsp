@@ -25,7 +25,6 @@
 		$("span.likes").click(function(){
 			var num=$(this).attr("num");
 			//alert(num);
-			var tag=$(this);
 			
 			$.ajax({
 				type:"get",
@@ -36,10 +35,28 @@
 					//alert(data.chu);
 					// this에 다음(span)에 data.chu
 					tag.next().text(data.chu);
+					
+					// 하트에 animate
+					tag.next().next().next().next().animate({"font-size":"10px"}, 500, function(){
+						// 애니메이션 끝난 후
+						$(this).css("font-size":"0px");
+					}); 					
 				}
 				
 			});
 		})
+		
+		// 삭제 버튼 클릭 시
+		$("i.del").click(function(){
+			var num=$(this).attr("num");
+			var currentPage=$(this).attr("currentPage");
+			//alert(num+", "+currentPage);
+			
+			var yes=confirm("정말 삭제하시겠습니까?");
+			if(yes){
+				location.href='memberGuest/delete.jsp?num='+num+'&currentPage'+currentPage;
+			}
+		});
 		
 		
 	});
@@ -147,7 +164,7 @@
 							if(loginok!=null && dto.getMyid().equals(myid)){%>
 								<div style="float:right;">
 									<!-- 단순 처리는 경로추가 안해도 됨. -->
-									<i class="bi bi-x-square del" onclick="location.href='memberGuest/delete.jsp?num=<%=dto.getNum() %>&currentPage=<%=currentPage %>'" style="color:red;"></i>
+									<i class="bi bi-x-square del" num=<%=dto.getNum() %> currentPage=<%=currentPage %> style="color:red;"></i>
 									<i class="bi bi-pencil-square mod" onclick="location.href='index.jsp?main=memberGuest/updateForm.jsp?num=<%=dto.getNum() %>&currentPage=<%=currentPage %>'" style="color:green;"></i>
 								</div> <Br>
 							<%}
@@ -185,6 +202,7 @@
 						<span class="answer" style="cursor:pointer;">댓글 0</span>
 						<span class="likes" style="margin-left: 20px; cursor:pointer;" num=<%=dto.getNum()%>><i class="bi bi-heart"></i></span>
 						<span class="chu"><%=dto.getChu() %></span>
+						<i class="bi bi-heart-fill redheart" style="font-size: 0px; color:red;"></i>
 					</td>
 				</tr>
 				
