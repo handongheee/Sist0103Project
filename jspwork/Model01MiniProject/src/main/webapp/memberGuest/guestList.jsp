@@ -14,6 +14,36 @@
    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
+<style type="text/css">
+	i.mod, i.del{
+		cursor: pointer;
+	}
+</style>
+
+<script type="text/javascript">
+	$(function(){
+		$("span.likes").click(function(){
+			var num=$(this).attr("num");
+			//alert(num);
+			var tag=$(this);
+			
+			$.ajax({
+				type:"get",
+				dataType:"json",
+				data:{"num":num},
+				url:"memberGuest/updateIncreChu.jsp",
+				success:function(data){
+					//alert(data.chu);
+					// this에 다음(span)에 data.chu
+					tag.next().text(data.chu);
+				}
+				
+			});
+		})
+		
+		
+	});
+</script>
 </head>
 <%
 	guestDao dao=new guestDao();
@@ -63,7 +93,6 @@
 	no=totalCount-(currentPage-1)*perpage;
 	
 	// 페이지에서 보여질 글만 가져오기
-
 	List<guestDto> list=dao.getList(start, perpage);
 	// --------------------------------------------------------------------------
 %>
@@ -76,6 +105,13 @@
 	String myid=(String)session.getAttribute("myid");
 	memberDao mdao=new memberDao();
 	//String name=mdao.getName(myid);
+	
+	// 마지막 페이지 방명록이 삭제될 경우 삭제 후 그 이전페이지로 랜딩
+	if(list.size()==0 && currentPage!=1){%>
+		<script type="text/javascript">
+			location.href="index.jsp?main=memberGuest/guestList.jsp?currentPage=<%=currentPage-1%>";
+		</script>
+	<%}
 	
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -106,12 +142,19 @@
 				<tr>
 					
 					<td style="margin-left:10px;">
-						<div style="float:right;">
-							<i class="bi bi-x-square" style="color:red;"></i>
-							<i class="bi bi-pencil-square" style="color:green;"></i>
-						</div> <Br>
+						<%
+							// 로그인한 아이디와 글쓴 아이디가 같은 경우에만 수정/삭제 버튼이 보이게한다
+							if(loginok!=null && dto.getMyid().equals(myid)){%>
+								<div style="float:right;">
+									<!-- 단순 처리는 경로추가 안해도 됨. -->
+									<i class="bi bi-x-square del" onclick="location.href='memberGuest/delete.jsp?num=<%=dto.getNum() %>&currentPage=<%=currentPage %>'" style="color:red;"></i>
+									<i class="bi bi-pencil-square mod" onclick="location.href='index.jsp?main=memberGuest/updateForm.jsp?num=<%=dto.getNum() %>&currentPage=<%=currentPage %>'" style="color:green;"></i>
+								</div> <Br>
+							<%}
+						%>	
 						
 						<%=num++ %> &nbsp;&nbsp;&nbsp;
+						<i class="bi bi-person-circle"></i>
 						<%=name %> (<%=dto.getMyid() %>)
 						<div style="color:#aaa; float:right;">
 							<%=sdf.format(dto.getWriteday()) %>
@@ -123,18 +166,28 @@
 						
 						<div style="margin-left: 30px;">
 						<%
+							// 이미지가 null이 아닌 경우 출력
 							if(dto.getPhotoname()==null){
 				
 							} else{
 								%>
-									<img src="./save/<%=dto.getPhotoname()%>" style="width:120px;">
+									<img src="save/<%=dto.getPhotoname()%>" style="width:120px;">
 								<%	
 							}					
 						%>
 						</div>
 					</td>
-					
 				</tr>
+				
+				<!-- 댓글 & 추천 -->
+				<tr>
+					<td>
+						<span class="answer" style="cursor:pointer;">댓글 0</span>
+						<span class="likes" style="margin-left: 20px; cursor:pointer;" num=<%=dto.getNum()%>><i class="bi bi-heart"></i></span>
+						<span class="chu"><%=dto.getChu() %></span>
+					</td>
+				</tr>
+				
 				
 			<%}
 			
@@ -144,35 +197,37 @@
 	</table>
 	
 	<!-- 페이지 번호 출력 -->
-	<ul class="pagination" style="margin-left: 250px;">
-		<%
-			// 이전
-			if(startPage>1){%>
-				<li class="page-item">
-					<a class="page-link" href="index.jsp?main=memberGuest/guestList.jsp?currentPage=<%=startPage-1%>" style="color:black;">이전</a>
-				</li>
-			<%}
-		
-			for(int pp=startPage; pp<=endPage; pp++){
-				if(pp==currentPage){%>
-					<li class="page-item active">
-						<a class="page-link" href="index.jsp?main=memberGuest/guestList.jsp?currentPage=<%=pp%>"><%=pp %></a>
-					</li>
-				<%} else{%>
+	<div style="width: 700px; text-align: center;">
+		<ul class="pagination justify-content-center">
+			<%
+				// 이전
+				if(startPage>1){%>
 					<li class="page-item">
-						<a class="page-link" href="index.jsp?main=memberGuest/guestList.jsp?currentPage=<%=pp%>"><%=pp %></a>
+						<a class="page-link" href="index.jsp?main=memberGuest/guestList.jsp?currentPage=<%=startPage-1%>" style="color:black;">이전</a>
 					</li>
 				<%}
-			}
 			
-			// 다음
-			if(endPage<totalPage){%>
-				<li class="page-item">
-					<a class="page-link" href="index.jsp?main=memberGuest/guestList.jsp?currentPage=<%=endPage+1%>" style="color:black">다음</a>
-				</li>			
-			<%}
-		%>
-	</ul>
+				for(int pp=startPage; pp<=endPage; pp++){
+					if(pp==currentPage){%>
+						<li class="page-item active">
+							<a class="page-link" href="index.jsp?main=memberGuest/guestList.jsp?currentPage=<%=pp%>"><%=pp %></a>
+						</li>
+					<%} else{%>
+						<li class="page-item">
+							<a class="page-link" href="index.jsp?main=memberGuest/guestList.jsp?currentPage=<%=pp%>"><%=pp %></a>
+						</li>
+					<%}
+				}
+				
+				// 다음
+				if(endPage<totalPage){%>
+					<li class="page-item">
+						<a class="page-link" href="index.jsp?main=memberGuest/guestList.jsp?currentPage=<%=endPage+1%>" style="color:black">다음</a>
+					</li>			
+				<%}
+			%>
+		</ul>
+	</div>
 </div>
 
 </body>
