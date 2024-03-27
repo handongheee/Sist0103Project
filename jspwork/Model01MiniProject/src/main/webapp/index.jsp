@@ -41,7 +41,7 @@
 		font-family: 'Noto Sans KR';
 		left:50px;
 		top:300px;
-		border: 5px groove black;
+		border: 2px groove black;
 		border-radius: 30px;
 		padding: 20px 20px;
 	}
