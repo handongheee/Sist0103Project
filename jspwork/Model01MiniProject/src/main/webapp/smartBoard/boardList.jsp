@@ -33,6 +33,46 @@
 		text-decoration: underline;
 	}
 </style>
+
+<script type="text/javascript">
+	$(function(){
+		// 전체 체크 클릭 시 체크값 얻어서 모든 체크값에 전달
+		$(".allDelCheck").click(function(){
+			// 전체 체크값 얻기
+			var chk=$(this).is(":checked");
+			console.log(chk); // true/false
+			
+			// 전체 체크값을 글 앞에 체크에 일괄 전달 - prop()
+			$(".allDel").prop("checked", chk);
+		});
+		
+		// 삭제 버튼 클릭 시 삭제
+		$("#btnDel").click(function(){
+			var len=$(".allDel:checked").length;
+			// alert(len);
+			if(len==0){
+				alert("최소 1개 이상 선택해주세요.");
+			} else{
+				// 삭제처리
+				var a=confirm(len+"개의 글을 삭제하시겠습니까?");
+				
+				// 체크된 곳의 value 값(num)을 n에 누적
+				var n="";
+				$(".allDel:checked").each(function(idx){
+					n+=$(this).val()+",";
+				});
+				
+				// 마지막 , 제거
+				n=n.substring(0,n.length-1);
+				console.log(n);
+				
+				// 삭제 파일로 전송
+				location.href="smartBoard/allDelete.jsp?nums="+n;
+			}
+		});
+		
+	});
+</script>
 </head>
 <%
 	smartDao dao=new smartDao();

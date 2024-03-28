@@ -287,6 +287,7 @@
 						
 						<div class="answer">
 							<%
+								// 댓글 작성
 								if(loginok!=null){%>
 									<div class="answerForm">
 										<form action="memberGuest/answerInsert.jsp" method="post">
@@ -317,6 +318,7 @@
 								
 								<table style="width: 500px;" >
 			    	               <%
+			    	               	// 댓글 출력
 			    	                 for(answerGuestDto adto:alist)
 			    	                 {%>
 			    	                	 <tr>

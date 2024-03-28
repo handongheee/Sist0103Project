@@ -11,6 +11,36 @@
    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+	function funcdel(num, currentPage){
+		//alert(num+", "+currentPage);
+		var yes=confirm("삭제하시겠습니까?");
+		
+		if(yes){
+			location.href="smartBoard/delete.jsp?num="+num+"&currentPage="+currentPage;
+		}
+	}
+	
+	$(function(){
+		$("#btnsend").click(function(){
+			var nickname=$("#nickname").val();
+			var content=$("#content").val();
+			
+			//alert(nickname+", "+content);
+			
+			$.ajax({
+				type:"get",
+				dataType:"html",
+				url:"smartAnswer/insertAnswer.jsp?",
+				data:{"nickname":nickname, "content":content},
+				success:function(){
+					alert("댓글 등록 성공");
+				}
+				
+			})
+		});
+	});
+</script>
 </head>
 <body>
 <!-- 상세페이지
@@ -24,8 +54,10 @@
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 	smartDao dao=new smartDao();
+	// dto 가져오기
 	smartDto dto=dao.getData(num);
-	dao.updateReadcount(num);
+	// 조회수 1 증가
+	dao.updateReadcount(num); 
 %>
 <div style="margin:50px 100px; width:600px;">
 	<table class="table table-bordered">
@@ -47,13 +79,29 @@
 			</td>
 		</tr>
 		
+		<!-- 댓글 -->
+		<tr>
+			<td>
+				<b class="acount">댓글 <span>0</span></b>
+				<div>
+					댓글 목록
+				</div>
+				
+				<div class="aform d-inline-flex">
+					<input type="text" id="nickname" class="form-control" style="width:100px;" placeholder="닉네임">
+					<input type="text" id="content" class="form-control" style="width:300px;" placeholder="댓글 내용">
+					<button type="button" id="btnsend" class="btn btn-info">저장</button>
+				</div>
+			</td>
+		</tr>
+		
 		<tr>
 			<td>
 				<div align="center">
 					<button type="button" class="btn btn-outline-success" onclick="location.href='index.jsp?main=smartBoard/boardList.jsp'"><i class="bi bi-list-ul"></i> 목록</button>
 					<button type="button" class="btn btn-outline-info" onclick="location.href='index.jsp?main=smartBoard/smartform.jsp'"><i class="bi bi-plus-square"></i> 글쓰기</button>
-					<button type="button" class="btn btn-outline-warning" onclick="location.href=''"><i class="bi bi-pencil-fill"></i> 수정</button>
-					<button type="button" class="btn btn-outline-danger" onclick="location.href=''"><i class="bi bi-x-square"></i> 삭제</button>
+					<button type="button" class="btn btn-outline-warning" onclick="location.href='index.jsp?main=smartBoard/updateForm.jsp?num=<%=num%> & currentPage=<%=currentPage%>'"><i class="bi bi-pencil-fill"></i> 수정</button>
+					<button type="button" class="btn btn-outline-danger" onclick="funcdel(<%=num%>, <%=currentPage%>)"><i class="bi bi-x-square"></i> 삭제</button>
 				</div>
 				
 			</td>
