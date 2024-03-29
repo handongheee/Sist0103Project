@@ -18,6 +18,7 @@
 	String num=request.getParameter("num");
 	
 	smartAnswerDto dto=new smartAnswerDto();
+	dto.setNum(num);
 	dto.setNickname(nickname);
 	dto.setContent(content);
 	
