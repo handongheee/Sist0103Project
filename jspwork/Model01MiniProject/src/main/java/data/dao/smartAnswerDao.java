@@ -81,7 +81,7 @@ public class smartAnswerDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		
-		String sql="select * from smartanswer where num=?";
+		String sql="select * from smartanswer where idx=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -107,7 +107,6 @@ public class smartAnswerDao {
 	}
 	
 	// 수정
-	
 	public void updateAnswer(smartAnswerDto dto) {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
@@ -135,7 +134,7 @@ public class smartAnswerDao {
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="delete from smartanswer where num=?";
+		String sql="delete from smartanswer where idx=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -149,8 +148,6 @@ public class smartAnswerDao {
 		} finally {
 			db.dbClose(pstmt, conn);
 		}
-	}
-	
-	// 
+	} 
 
 }

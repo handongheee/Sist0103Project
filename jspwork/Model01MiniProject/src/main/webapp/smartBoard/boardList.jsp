@@ -1,3 +1,4 @@
+<%@page import="data.dao.smartAnswerDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="data.dao.smartDao"%>
 <%@page import="java.util.Vector"%>
@@ -24,8 +25,8 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
-		width: 270px;
-		display: block;
+		width: 250px;
+		display: block;		
 	}
 	
 	a.detail:hover{
@@ -125,6 +126,16 @@
 	// 페이지에서 보여질 글만 가져오기
 	List<smartDto> list=dao.getList(start, perpage);
 	// --------------------------------------------------------------------------
+	
+	
+	// 댓글 개수 출력 0401
+	smartAnswerDao adao=new smartAnswerDao();
+	for(smartDto dto:list){
+		// 댓글 변수에 댓글 총 개수 넣기
+		int acount=adao.getAnswerList(dto.getNum()).size(); // 글번호에 따른 리스트의 개수
+		dto.setAnswercount(acount);
+	}
+	
 %>
 <body>
 <div style="margin:50px 100px; width:800px;">
@@ -165,7 +176,14 @@
 							<input type="checkbox" class="allDel" value="<%=dto.getNum()%>">
 						</td>
 						<td align="center"><%=no-- %></td>
-						<td><a class="detail" href="index.jsp?main=smartBoard/contentView.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>"><%=dto.getSubject()%></a></td>
+						<td><a class="detail" href="index.jsp?main=smartBoard/contentView.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>"> <%=dto.getSubject()%> </a>
+						<%
+							// 댓글이 있을 경우에 개수 출력 & 댓글 위치로 랜딩
+							if(dto.getAnswercount()>0){%>
+								<a href="index.jsp?main=smartBoard/contentView.jsp?num=<%=dto.getNum()%>&currentPage=<%=currentPage%>#alist" style="color:red;">[<%=dto.getAnswercount()%>]</a>
+							<%}
+						%>
+						</td>
 						<td><%=dto.getWriter() %></td>
 						<td><%=sdf.format(dto.getWriteday())%> </td>
 						<td align="center"><%=dto.getReadcount() %></td>

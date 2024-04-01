@@ -38,6 +38,7 @@
 
 <script type="text/javascript">
 	$(function(){
+		// 처음 시작 시 댓글 호출
 		list(); 
 		
 		var num=$("#num").val();
@@ -93,15 +94,14 @@
 					dataType:"html",
 					data:{"idx":idx},
 					success:function(){
-						alert("삭제성공");
-						//swal("삭제 성공!", "삭제가 성공되었습니다", "success");
+						//alert("삭제성공");
+						swal("삭제 성공!", "삭제가 성공되었습니다", "success");
 						list();
 					}
 				});
 				
 			}
-		})
-
+		});
 		
 		// 수정폼에 데이터 띄우기
 		$(document).on("click","i.amod",function(){
@@ -177,9 +177,9 @@
 				$.each(res, function(idx, item){
 					s+="<div>"+item.nick+" : "+item.content;
 					s+="<span class='aday'>"+item.writeday+"</span>";
-					s+="<span class='icon'><i class='bi bi-trash3 adel' idx="+item.idx+"></i>";
-					s+="<i class='bi bi-pencil amod' idx="+item.idx+"></i></span>";
-					s+="</div>";
+					s+="<span class='icon'><i class='bi bi-trash adel' idx="+item.idx+"></i>";
+					s+="<i class='bi bi-pencil-square amod' idx="+item.idx+"></i></span>";
+					s+="</div>";	
 					
 				});
 				
@@ -233,7 +233,7 @@
 		<!-- 댓글 -->
 		<tr>
 			<td>
-				<b class="acount">댓글 <span>0</span></b>
+				<b class="acount" id="alist">댓글 <span>0</span></b>
 				<div class="alist">
 					댓글 목록
 				</div>

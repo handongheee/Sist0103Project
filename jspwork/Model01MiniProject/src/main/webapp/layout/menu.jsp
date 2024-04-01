@@ -77,7 +77,20 @@
 							
 						</ul>
 					</li>
-					<li><a href="#">About CocaCola</a></li>
+					
+					<li class="parent">
+						<a href="#">CocaCola Shop</a>
+						<ul class="sub-menu">
+						
+						<%
+							if(loginok!=null && myid.equals("admin")){%>
+								<li><a href="index.jsp?main=shop/addForm.jsp"><i class="icon-wrench"></i> 상품등록</a></li>
+							<%} else{%>
+								<li><a href="index.jsp?main=shop/shopList.jsp"><i class="icon-credit-card"></i> 상품목록</a></li>							
+							<%}
+						%>	
+						</ul>
+					</li>
 				</ul>
 			</nav>
 			<div class="clear"></div>

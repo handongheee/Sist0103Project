@@ -187,9 +187,9 @@ function pasteHTML(filepath){
 			<td colspan="2">
 				<textarea name="content" id="content"		
 					required="required"			
-					style="width: 100%;height: 300px;display: none;">
+					style="width: 100%; height: 300px;display: none;">
 					<%=dto.getContent() %>
-					</textarea>		
+				</textarea>		
 			
 			</td>
 		</tr>

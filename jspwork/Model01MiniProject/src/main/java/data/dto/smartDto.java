@@ -9,6 +9,7 @@ public class smartDto {
 	private String content;
 	private int readcount;
 	private Timestamp writeday;
+	private int answercount; // 댓글 개수 저장
 	
 	public String getNum() {
 		return num;
@@ -45,6 +46,12 @@ public class smartDto {
 	}
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
+	}
+	public int getAnswercount() {
+		return answercount;
+	}
+	public void setAnswercount(int answercount) {
+		this.answercount = answercount;
 	}
 
 }
