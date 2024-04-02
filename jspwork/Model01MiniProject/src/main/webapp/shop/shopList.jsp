@@ -28,13 +28,32 @@
 		height:150px;
 	}
 	
-	.goDetail{
+	a.goDetail{
 		text-decoration: none; 
 		color:black;"
 	}
 	
+	a.hover{
+		color:gray;
+		text-decoration: underline;
+	}
 
 </style>
+
+
+<script type="text/javascript">
+	$(function(){
+		$("a.goDetail").click(function(){
+			var shopnum=$(this).attr("shopnum");
+			//alert(shopnum);
+			
+			// 디테일 페이지로 이동
+			location.href="index.jsp?main=shop/detailPage.jsp?shopnum="+shopnum;
+		});
+		
+	});
+	
+</script>
 </head>
 <%
 	shopDao dao=new shopDao();
@@ -71,7 +90,7 @@
 							<a shopnum="<%=dto.getShopnum()%>" style="cursor: pointer; class="goDetail">
 								<img alt="" src="shopsave/<%=dto.getPhoto()%>" class="photo">
 								<br>
-								<%=dto.getSangpum() %> <br>
+								<%=dto.getSangpum() %> <br> </a>
 								<b style="color:red;"><%=sale %>%</b>
 								<span style="float:right;">
 									<div style="color:gray; font-size: 12px;">
@@ -87,7 +106,7 @@
 									</div>
 								</span>
 								
-							</a>
+							
 						</td>	
 						<%
 							// 한 행에 들어갈 아이템 수 설정
@@ -106,7 +125,7 @@
     
     <div id="tabs-zero" class="tab-pane fade">
       <h3>제로</h3>
-      <p>전체 - 제로
+      <p>
       	<table class="shop table table-bordered" style="width:900px;">
 			<tr>
 				<%
@@ -122,7 +141,7 @@
 							<a shopnum="<%=dto.getShopnum()%>" style="cursor: pointer;" class="goDetail">
 								<img alt="" src="shopsave/<%=dto.getPhoto()%>" class="photo">
 								<br>
-								<%=dto.getSangpum() %> <br>
+								<%=dto.getSangpum() %> <br></a>
 								<b style="color:red;"><%=sale %>%</b>
 								<span style="float:right;">
 									<div style="color:gray; font-size: 12px;">
@@ -138,7 +157,7 @@
 									</div>
 								</span>
 								
-							</a>
+							
 						</td>	
 						<%
 							// 한 행에 들어갈 아이템 수 설정
@@ -163,7 +182,7 @@
     
     <div id="tabs-coke" class="tab-pane fade">
       <h3>콜라</h3>
-      <p>전체 - 콜라
+      <p>
       	<table class="shop table table-bordered" style="width:900px;">
 			<tr>
 				<%
@@ -179,7 +198,7 @@
 							<a shopnum="<%=dto.getShopnum()%>" style="cursor: pointer;" class="goDetail">
 								<img alt="" src="shopsave/<%=dto.getPhoto()%>" class="photo">
 								<br>
-								<%=dto.getSangpum() %> <br>
+								<%=dto.getSangpum() %> <br></a>
 								<b style="color:red;"><%=sale %>%</b>
 								<span style="float:right;">
 									<div style="color:gray; font-size: 12px;">
@@ -195,7 +214,7 @@
 									</div>
 								</span>
 								
-							</a>
+							
 						</td>	
 						<%
 							// 한 행에 들어갈 아이템 수 설정
@@ -218,7 +237,7 @@
     
     <div id="tabs-ade" class="tab-pane fade">
       <h3>이온음료</h3>
-      <p>전체 - 이온음료
+      <p>
       	<table class="shop table table-bordered" style="width:900px;">
 			<tr>
 				<%
@@ -234,7 +253,7 @@
 							<a shopnum="<%=dto.getShopnum()%>" style="cursor: pointer;" class="goDetail">
 								<img alt="" src="shopsave/<%=dto.getPhoto()%>" class="photo">
 								<br>
-								<%=dto.getSangpum() %> <br>
+								<%=dto.getSangpum() %> <br></a>
 								<b style="color:red;"><%=sale %>%</b>
 								<span style="float:right;">
 									<div style="color:gray; font-size: 12px;">
@@ -250,7 +269,7 @@
 									</div>
 								</span>
 								
-							</a>
+							
 						</td>	
 						<%
 							// 한 행에 들어갈 아이템 수 설정
@@ -273,7 +292,7 @@
     
     <div id="tabs-coffee" class="tab-pane fade">
       <h3>커피</h3>
-      <p>전체 - 커피
+      <p>
       	<table class="shop table table-bordered" style="width:900px;">
 			<tr>
 				<%
@@ -289,7 +308,7 @@
 							<a shopnum="<%=dto.getShopnum()%>" style="cursor: pointer;" class="goDetail">
 								<img alt="" src="shopsave/<%=dto.getPhoto()%>" class="photo">
 								<br>
-								<%=dto.getSangpum() %> <br>
+								<%=dto.getSangpum() %> <br></a>
 								<b style="color:red;"><%=sale %>%</b>
 								<span style="float:right;">
 									<div style="color:gray; font-size: 12px;">
@@ -305,7 +324,7 @@
 									</div>
 								</span>
 								
-							</a>
+							
 						</td>	
 						<%
 							// 한 행에 들어갈 아이템 수 설정
@@ -328,7 +347,7 @@
     
     <div id="tabs-water" class="tab-pane fade">
       <h3>물</h3>
-      <p>전체 - 물
+      <p>
       	<table class="shop table table-bordered" style="width:900px;">
 			<tr>
 				<%
@@ -344,7 +363,7 @@
 							<a shopnum="<%=dto.getShopnum()%>" style="cursor: pointer;" class="goDetail">
 								<img alt="" src="shopsave/<%=dto.getPhoto()%>" class="photo">
 								<br>
-								<%=dto.getSangpum() %> <br>
+								<%=dto.getSangpum() %> <br></a>
 								<b style="color:red;"><%=sale %>%</b>
 								<span style="float:right;">
 									<div style="color:gray; font-size: 12px;">
@@ -360,7 +379,7 @@
 									</div>
 								</span>
 								
-							</a>
+							
 						</td>	
 						<%
 							// 한 행에 들어갈 아이템 수 설정

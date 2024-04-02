@@ -1,3 +1,4 @@
+<%@page import="data.dao.shopDao"%>
 <%@page import="data.dao.memberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
@@ -8,7 +9,32 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <title>title</title>
+<style type="text/css">
+	.cartIcon{
+		font-size: 30px;
+		color:black;
+	}
+	
+	div.cart{
+		float: right;
+		cursor: pointer;
+	}
+	
+	.cartCount{
+		width:20px;
+		height:20px;
+		float: right;
+		background-color: red;
+		color: black;
+		border-radius: 100px;
+		z-index: 5;
+		left: -12px;
+		top: 24px;
+		position: relative;
+	}
+</style>
 </head>
 <%
 	// 프로젝트 경로 (절대경로)
@@ -43,5 +69,21 @@
 			<%}
 		%>
 	</div>
+	
+	<%
+		// 장바구니	
+		// shopDao
+		shopDao sdao=new shopDao();
+		
+		// cart 상품 개수 얻기
+		int cartSize=sdao.getCartList(myid).size();
+		System.out.println(cartSize);
+	%>
+	<div class="cart">
+		<a href="index.jsp?main=shop/myCart.jsp"><i class="bi bi-bag cartIcon"></i></a>
+		<div class="cartCount"><%=cartSize %></div>
+		
+	</div>
+	
 </body>
 </html>
