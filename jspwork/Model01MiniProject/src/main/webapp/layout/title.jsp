@@ -27,14 +27,25 @@
 		height:20px;
 		float: right;
 		background-color: red;
-		color: black;
+		color: white;
 		border-radius: 100px;
 		z-index: 5;
 		left: -12px;
-		top: 24px;
+		top: 22px;
 		position: relative;
+		text-align: center;
+      	line-height: 20px;
+      	font-size: 11pt;
 	}
 </style>
+
+<script type="text/javascript">
+	$(function(){
+		$("div.cart").click(function(){
+			location.href="index.jsp?main=shop/myCart.jsp";
+		});
+	});
+</script>
 </head>
 <%
 	// 프로젝트 경로 (절대경로)
@@ -80,7 +91,7 @@
 		System.out.println(cartSize);
 	%>
 	<div class="cart">
-		<a href="index.jsp?main=shop/myCart.jsp"><i class="bi bi-bag cartIcon"></i></a>
+		<i class="bi bi-bag cartIcon"></i>
 		<div class="cartCount"><%=cartSize %></div>
 		
 	</div>
