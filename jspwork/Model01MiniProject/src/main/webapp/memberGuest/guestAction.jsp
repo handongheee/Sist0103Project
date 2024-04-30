@@ -20,7 +20,7 @@
 	
 	// 이미지 저장 경로 가져오기
 	String realPath=getServletContext().getRealPath("/save");
-	System.out.println(realPath);
+	System.out.println("절대경로2: "+realPath);
 	
 	int uploadSize=1024*1024*3; // 이미지 업로드 사이즈 3mb
 	

@@ -50,6 +50,7 @@
 <%
 	// 프로젝트 경로 (절대경로)
 	String root=request.getContextPath();
+	System.out.println("절대경로"+root);
 %>
 <body>
 	<a href="<%=root%>" style="color:black; text-decoration: none">

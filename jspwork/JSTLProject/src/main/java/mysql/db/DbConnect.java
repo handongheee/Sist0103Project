@@ -11,7 +11,6 @@ public class DbConnect {
 	static final String MYSQLDRIVER = "com.mysql.cj.jdbc.Driver"; // 상수
 	static final String MYSQL_URL = "jdbc:mysql://localhost:3306/coffee";
 	
-	
 
 	public DbConnect() {
 		try {
