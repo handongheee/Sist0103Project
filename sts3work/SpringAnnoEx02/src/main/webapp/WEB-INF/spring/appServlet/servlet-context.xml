@@ -23,6 +23,5 @@
 	
 	<context:component-scan base-package="spring.day0430.anno01" />
 	
-	
-	
+
 </beans:beans>
