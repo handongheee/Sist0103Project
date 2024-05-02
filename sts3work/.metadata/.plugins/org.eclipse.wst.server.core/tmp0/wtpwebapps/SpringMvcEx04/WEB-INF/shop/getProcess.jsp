@@ -18,6 +18,7 @@ rel="stylesheet">
 	<h3>1번 get방식 form으로부터 입력한 값</h3>
 	이름: ${name } <br>
 	나이: ${age } <br>
+	
 	${msg }
 </body>
 </html>
