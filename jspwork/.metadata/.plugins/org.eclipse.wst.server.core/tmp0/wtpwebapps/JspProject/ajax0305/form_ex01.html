@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>폼태그에 데이터 입력 후 jsp로 보내기</h3>
+	이름: <input type="text" id="name" size="10"><br>
+	핸드폰: <input type="text" id="hp" size="12"><br>
+	<button type="button" id="btn1">ajax로 서버에 보내기 #01</button>
+	<button type="button" id="btn2">ajax로 서버에 보내기 #02</button>
+	<hr>
+	<div id="show"></div>
+	
+	<script type="text/javascript">
+		$("#btn1").click(function(){
+			// 입력한 값 읽기
+			var name=$("#name").val();
+			var hp=$("#hp").val();
+			
+			// 방법 01. 데이터 변수 만들기, 연결연산자 & 활용
+			var data="name="+name+"&hp="+hp;
+			//alert(data);
+			
+			// ajax함수를 통해 백엔드로 데이터 보낸다(jsp)
+			$.ajax({
+				type:"get",
+				url:"read01_ex01.jsp",
+				dataType:"html", // 백엔드에서 아무것도 리턴 안할 경우 "html"
+				//data:data, 방법01
+				data:{"name":name, "hp":hp}, // 방법 02 json형식
+				success:function(){
+					//alert("success");
+					$("#show").html("<h3 class='alert alert-info'>"+data+"</h3>")
+				},
+				statusCode:{
+					404:function(){
+						alert("파일을 찾을 수 없음");
+					},
+					500:function(){
+						alert("서버 오류-코드 재확인");
+					}				
+				}			
+			});	
+		});
+		
+		$("#btn2").click(function(){
+			var name=$("#name").val();
+			var hp=$("#hp").val();
+			
+			$.ajax({
+				type:"get",
+				url:"read02_ex01.jsp",
+				dataType:"xml",
+				data:{"name":name, "hp":hp},
+				success:function(res){
+					var s="<h2>"+$(res).find("name").text()+" 님 데이터를 DB에 추가했어요</h2>";
+					$("#show").html(s);
+				}
+			})
+		})
+	</script>
+
+</body>
+</html>

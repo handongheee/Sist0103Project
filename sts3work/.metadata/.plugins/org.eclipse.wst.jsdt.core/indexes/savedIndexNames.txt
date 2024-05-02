@@ -1,0 +1,10 @@
+INDEX VERSION 1.4+/Users/han/sist0103/work/sts3work/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+2952358212.index
+2695453307.index
+1518418024.index
+472065526.index
+186013168.index
+832437479.index
+1790401629.index
+451007152.index
+2672877192.index

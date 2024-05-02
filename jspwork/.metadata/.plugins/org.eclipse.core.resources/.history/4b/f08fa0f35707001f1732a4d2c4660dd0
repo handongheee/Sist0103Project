@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="JSTLProject">
+        <property name="context-root" value="JSTLProject"/>
+        <property name="java-output-path" value="/JSTLProject/build/classes"/>
+    </wb-module>
+</project-modules>
