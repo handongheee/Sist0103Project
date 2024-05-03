@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
 <aop-project name="SpringMvcEx03"/>
-<aop-project name="SpringTestMac"/>
+<aop-project name="SpringMvcEx04"/>
 <aop-project name="SpringMvcQuiz"/>
+<aop-project name="SpringTestMac"/>
 <aop-project name="SpringXmlEx01"/>
 </aop-reference-model>

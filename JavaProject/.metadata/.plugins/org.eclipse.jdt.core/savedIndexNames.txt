@@ -1,5 +1,0 @@
-INDEX VERSION 1.134+/Users/han/sist0103/work/JavaProject/.metadata/.plugins/org.eclipse.jdt.core
-2886230001.index
-364355689.index
-2818466.index
-1865797976.index
