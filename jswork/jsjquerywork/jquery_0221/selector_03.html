@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <p>오늘 공부할 내용</p>
+    <ol>
+        <li>선택자 0</li> <!--first-->
+        <li>속성이라면 1</li>
+        <li>스타일 2</li>
+        <li>이벤트 3</li>
+    </ol>
+
+    <p>오늘점심메뉴</p>
+    <ol>
+        <li>순두부찌개 4</li>
+        <li>햄버거 5</li>
+        <li>계란라면 6</li>
+        <li>스파게티 7</li>
+    </ol>
+
+    <script>
+        //$("ol>li:first").css("backgroundColor","yellow"); // first 전체에서 첫번째
+        $("ol>li:first-child").css("backgroundColor", "yellow"); // first-child 각 ol 항목에 첫번째 li에 적용
+
+        // contains 전체 항목에서 '라면'을 찾아서 글자 크기를 2em
+        $("li:contains(라면)").css("fontSize", "2em");
+
+        // odd:홀수, even:짝수
+        $("li:odd").css("border","2px inset magenta");
+
+    </script>
+
+</body>
+
+</html>

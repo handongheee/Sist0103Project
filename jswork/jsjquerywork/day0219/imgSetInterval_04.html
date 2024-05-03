@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<link
+    href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+    rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #photo {
+            width: 400px;
+            height: 460px;
+            border: 10px groove gray;
+        }
+
+        .msg {
+            font-family: IBM Plex Sans KR;
+            font-size: 24px;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            // 3초마다 연예인 사진이 바뀌게 하기
+            var p = document.getElementById("photo");
+            var m = document.querySelector(".msg");
+            var msgarr = ["아름다운 밤이에요~", "오늘은 비가 오네요", "이제는 봄", "내가 좋아하는 연예인"];
+            var mcolorarr = ['magenta', 'gray', 'blue', 'pink', 'purple', 'orange'];
+
+            setInterval(function () {
+                // 1~20 난수
+                var imgsrc = parseInt(Math.random() * 20) + 1;
+
+                // 이미지 변경
+                p.setAttribute("src", "../image/연예인사진/" + imgsrc + ".jpg");
+
+            }, 3000);
+
+            // 3초마다 메세지가 msgarr로 변하기
+            /*
+            setInterval(function () {
+                // 0~3 난수
+                var midx = parseInt(Math.random() * 4);
+                m.innerHTML = msgarr[midx];
+
+                // 0~5 사이의 랜덤
+                var cidx = parseInt(Math.random() * 6);
+                m.style.color=mcolorarr[cidx];
+            }, 1000);
+            */
+            // 화살표함수
+            setInterval(() => {
+                // 0~3 난수
+                var midx = parseInt(Math.random() * 4);
+                // 0~5 사이의 랜덤
+                var cidx = parseInt(Math.random() * 6);
+
+                m.innerHTML = msgarr[midx]; // 메세지
+                m.style.color = mcolorarr[cidx]; // 글자색
+
+            }, 1000);
+
+        }
+    </script>
+</head>
+
+<body>
+    <img src="../image/연예인사진/15.jpg" id="photo">
+    <div class="msg">메세지 출력</div>
+</body>
+
+</html>

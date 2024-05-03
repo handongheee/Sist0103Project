@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+        .highlight_0 {
+            background-color: beige;
+        }
+
+        .highlight_1 {
+            background-color: yellowgreen;
+        }
+
+        .highlight_2 {
+            background-color: teal;
+        }
+
+        .highlight_3 {
+            background-color: coral;
+        }
+
+        .highlight_4 {
+            background-color: tan;
+        }
+
+        .highlight_5 {
+            background-color: slateblue;
+        }
+
+        h4, ol {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>하이라이트 적용_01</h4>
+    <h4>하이라이트 적용_02</h4>
+    <h4>하이라이트 적용_03</h4>
+    <h4>하이라이트 적용_04</h4>
+    <h4>하이라이트 적용_05</h4>
+    <h4>하이라이트 적용_06</h4>
+
+    <ol>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+        <li>five</li>
+        <li>six</li>
+    </ol>
+
+    <script>
+        // each문
+        $("h4").each(function (idx, ele) {
+            $(ele).addClass("highlight_" + idx);
+        });
+
+        // 방법01_each
+        // $("ol>li").each(function (idx) {
+        //     $(this).addClass("highlight_" + idx);
+        // });
+        // 방법02_return
+        $("ol>li").addClass(function (idx) {
+            return "highlight_" + idx
+        });
+    </script>
+
+</body>
+
+</html>

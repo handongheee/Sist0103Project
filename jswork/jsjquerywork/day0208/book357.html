@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Basic p357</title>
+    <script>
+        //이벤트 연결
+        window.onload = function () {
+            //변수 선언
+            var output = '';
+            for (var i = 0; i < 10; i++) {
+                output += '<h1>header-' + i + '</h1>';
+            }
+
+            //문서 객채 내부의 글자 변경
+            //document.body.textContent = output;
+            //innerHTML 속성을 사용
+            document.body.innerHTML=output;
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

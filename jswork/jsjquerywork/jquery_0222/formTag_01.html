@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+        #result {
+            font-size: 2em;
+            margin-top: 50px;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                // 글꼴
+                var font = $("select option:selected").val();
+                // 글자색
+                var fontcolor = $("input[name='fcol']:checked").val();
+
+                $("#result").css({
+                    "fontFamily": font,
+                    "color": fontcolor
+                });
+
+                // 이미지
+                myimg = "";
+                $("input[name='minions']:checked").each(function (idx, ele) {
+                    chkimg = $(this).val();
+                    myimg += "<img src='../image/jquery_img/" + chkimg + ".png'>";
+                });
+                $(".myminions").html(myimg);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h2>폼태그 복습</h2>
+    <div style="margin: 50px 50px;">
+        <h5>글꼴</h5>
+        <select>
+            <option>Dongle</option>
+            <option>Gamja Flower</option>
+            <option>Gowun Dodum</option>
+            <option>IBM Plex Sans KR</option>
+            <option>Noto Sans KR</option>
+        </select>
+
+        <h5>글자색</h5>
+        <input type="radio" name="fcol" value="#CC33FF">핑크
+        <input type="radio" name="fcol" value="#3399FF">파랑
+        <input type="radio" name="fcol" value="#9966FF">보라
+        <input type="radio" name="fcol" value="#00CC00">초록
+
+        <h5>체크된 이미지 모두 출력</h5>
+        <input type="checkbox" name="minions" value="01">미니언즈01
+        <input type="checkbox" name="minions" value="02">미니언즈02
+        <input type="checkbox" name="minions" value="03">미니언즈03
+        <input type="checkbox" name="minions" value="04">미니언즈04
+
+        <br><br>
+        <button type="button" class="btn btn-info" id="btn1">선택값 모두 출력</button>
+    </div>
+
+    <div id="result" style="margin: 50px 50px;">
+        오늘 예쁜 눈 펑펑!!
+        <div class="myminions">
+            미니언즈 출력
+        </div>
+
+    </div>
+
+</body>
+
+</html>

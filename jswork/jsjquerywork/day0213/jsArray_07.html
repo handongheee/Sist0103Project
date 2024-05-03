@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+            border: 2px solid purple;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // var hello = "<h2>" + Hello + "<h2>"
+        // document.write(hello);
+
+        // 1~10까지 출력
+        for (var i = 1; i <= 10; i++) {
+            document.write("<b>" + i + "</b> &nbsp");
+        }
+        document.write("<hr>");
+
+        // food 폴더의 1~10까지를 출력하시오 너비100
+        for (var i = 1; i <= 10; i++) {
+            var f = "<img src='../image/Food/" + i + ".jpg' width='100' height='100'>";
+            document.write(f);
+        }
+        document.write("<hr>");
+
+        // logoImg 폴더의 toy01~06.png출력
+        for (var i = 1; i <= 6; i++) {
+            var t = "<img src='../image/logoImg/toy0" + i + ".png' width='100'>";
+            document.write(t);
+        }
+        document.write("<hr>");
+
+        // 사진에 일련번호가 없을때 이미지를 배열에 담아 출력
+        var imgArr = ["a01", "captain", "icon01", "icon05", "acc02", "bag01", "blackwidow"];
+
+        for (var i = 0; i < imgArr.length; i++) {
+            var arr = "<img src='../image/logoImg/" + imgArr[i] + ".png'>";
+            document.write(arr);
+        }
+        document.write("<hr>");
+
+        // Q.만화이미지에 01.png~20.png 까지 출력하세요
+
+        /*
+        for (var i = 1; i <= 9; i++) {
+            var img = "<img src='../image/만화이미지/0" + i + ".png'>";
+            document.write(img);
+        }
+        for (var i = 10; i <= 20; i++) {
+            var img = "<img src='../image/만화이미지/" + i + ".png'>";
+            document.write(img);
+        }
+        */
+
+        // 3항연산자 사용
+        for (var i = 1; i <= 20; i++) {
+            var imgName = "../image/만화이미지/" + (i < 10 ? "0" : "") + i + ".png";
+            var s = "<img src='" + imgName + "'>";
+            document.write(s);
+
+            // 4행5열로 출력
+            if(i%5==0){
+                document.write("<br><br>");
+            }
+        }
+    </script>
+</body>
+
+</html>

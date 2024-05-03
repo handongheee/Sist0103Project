@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컨펌창</title>
+</head>
+
+<body>
+    <script>
+        var ans = confirm("정말 삭제할까요?");
+
+        // 결과값이 존재하면 1, true
+        if (ans) {
+            document.write("삭제합니다.<br>");
+        } else {
+            document.write("삭제하지 않습니다.<br>");
+        }
+    </script>
+
+    <script>
+        // eval: 문자열 내에서 연산이 가능한 함수 
+        var a = eval("15+10.5");
+        document.write(a + "<br>"); // 25.5
+        document.write(parseFloat(a) + parseInt(a) + "<br>"); // 25.5+25=50.5
+    </script>
+
+    <script>
+        // prompt창에 단을 입력해서 해당 단 출력하기
+        var dan = (Number)(prompt("단을 입력하세요"));
+
+        for (var i = 1; i < 10; i++) {
+            var result = dan * i;
+            document.write(dan + "*" + i + "=" + result + "<br>");
+        }
+    </script>
+</body>
+
+</html>

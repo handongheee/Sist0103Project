@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid gray;
+            padding: 20px 20px 20px 20px;
+            width: 500px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>폼태그 연습_#01</h2>
+    <div>
+        <input type="text" style="width: 150px;" placeholder="아이디">
+        <input type="password" style="width: 150px;" placeholder="비밀번호">
+    </div>
+
+    <script>
+        // 포커스가 갈 경우 배경색 주기
+        $("input:text, input:password").focus(function () {
+            $(this).css("backgroundColor", "pink");
+        });
+
+        // 포커스 벗어나면 원래대로 blur/focusout
+        $("input:text, input:password").blur(function () {
+            $(this).css("backgroundColor", "white");
+        });
+
+    </script>
+
+    <h2>폼태그 연습_#02</h2>
+    <div>
+        <input type="checkbox" id="cbLisence" value="lic">운전면허
+        <button type="button" id="btn1">확인</button> &nbsp;&nbsp;
+        <span></span>
+    </div>
+
+    <script>
+        $("#btn1").click(function () {
+            var a = $("#cbLisence").val(); // value 미지정 시, 결과값 무조건 on (value지정하면 value값 출력-lic)
+            var b = $("#cbLisence").is(":checked"); // 체크상태 유무 true/false
+            $("span:eq(0)").html(a + " " + b);
+        });
+    </script>
+
+    <h2>폼태그 연습_#03</h2>
+    <div>
+        <b>당신의 연령대?</b>
+        <input type="radio" name="age" value="20대">20대
+        <input type="radio" name="age" value="30대">30대
+        <input type="radio" name="age" value="40대">40대
+        <input type="radio" name="age" value="50대">50대
+        <input type="radio" name="age" value="60대">60대 이후
+        <br>
+        <button type="button" id="btn2">연령대 출력</button>
+        <span></span>
+    </div>
+
+    <script>
+        $("#btn2").click(function () {
+            var data = $("input[name='age']:checked").val(); // 체크된 값 가져옴
+            $("span:eq(1)").html(data);
+        });
+    </script>
+
+    <h2>폼태그 연습_#04</h2>
+    <div>
+        <b>여행 가본 나라는?</b>
+        <input type="checkbox" name="nara" value="프랑스">프랑스
+        <input type="checkbox" name="nara" value="영국">영국
+        <input type="checkbox" name="nara" value="체코">체코
+        <input type="checkbox" name="nara" value="미국">미국
+        <input type="checkbox" name="nara" value="일본">일본
+        <br>
+        <button type="button" id="btn3">나라 출력</button>
+        <span></span>
+    </div>
+
+    <script>
+        $("#btn3").click(function () {
+            var len = $("input[name='nara']:checked").length;
+            //alert(len);
+
+            var s = "체크된 개수: " + len;
+
+            if (len == 0) {
+                s += "<br>가본 나라 없음";
+            } else {
+                $("input[name='nara']:checked").each(function (idx, ele) {
+                    s += "<br>" + $(this).val() + "&nbsp;";
+                });
+            }
+
+            $("span:eq(2)").html(s); // span에 출력
+        });
+    </script>
+
+    <h2>폼태그 연습_#05</h2>
+    <div>
+        <select id="selone">
+            <option value="red">빨강</option>
+            <option value="blue">파랑</option>
+            <option value="green">초록</option>
+            <option value="gray">회색</option>
+            <option value="pink">핑크</option>
+        </select>
+        <button type="button" id="btn4">색상 가져오기</button>
+        <br>
+        <span></span>
+    </div>
+
+    <script>
+        // 버튼 누르면 해당 글자 색으로 출력
+        // #아이디 option:selected / checked도 가능
+        $("#btn4").click(function () {
+            // var check = $("#selone option:selected").val();
+            // $("span:eq(3)").html(check).css({
+            //     "color": check
+            // });
+
+            // 선생님 답안
+            var text = $("#selone option:checked").text();
+            var colval = $("#selone option:checked").val();
+
+            // var s="선택 text: "+text;
+            // s+=", 선택 val: "+colval;
+            var s = "<b style='color:" + colval + "'>" + text + "</b>";
+
+            $("span:eq(3)").html(s);
+        })
+    </script>
+</body>
+
+</html>

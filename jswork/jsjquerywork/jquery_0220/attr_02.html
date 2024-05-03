@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gamja+Flower&family=Gowun+Dodum&family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+    <script>
+        $(function () {
+            // 1. h3>b태그 글자색을 green으로 변경하고 배경색을 #ffddff 로 변경
+            $("h3>b").css({
+                "color": "green",
+                "backgroundColor": "#ffddff"
+            });
+
+            // 2. 모든 h3 너비 400px, border 2px inset orange, margin-bottom 10px
+            $("h3").css({
+                "width": "400px",
+                "border": "2px inset orange",
+                "margin-bottom": "10px"
+            });
+
+            // 3. 모든 span태그 글꼴을 Dongle로 변경하고 글자색 purple로 변경
+            $("span").css({
+                "font-family": "Dongle",
+                "color": "purple"
+            })
+
+            // 4. 모든 b태그 클릭하면 b태그의 글자 가져와서 h2태그에 넣어주기 그리고 그 이미지에 해당 이미지 나타내기
+            $("h3>b").click(function () {
+                // 현재 클릭한 곳 b태그 글자 얻기
+                var title = $(this).text();
+                //console.log(title);
+                // h2에 음식명 나오게
+                $("h2").text(title);
+
+                // 클릭한 b태그 다음(br)의 다음(span) 태그 안에 글자 얻기
+                var spanImg = $(this).next().next().text();
+                //console.log(spanImg);
+                // img에 적용
+                $("img.photo").attr("src", spanImg);
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <h3>
+        <b>에그볶음밥</b>
+        <br>
+        <span>../image/Food/6.jpg</span>
+    </h3>
+    <hr>
+    <h3>
+        <b>망고빙수</b>
+        <br>
+        <span>../image/Food/11.jpg</span>
+    </h3>
+    <hr>
+    <h3>
+        <b>순두부찌개</b>
+        <br>
+        <span>../image/Food/12.jpg</span>
+    </h3>
+    <hr>
+
+    <img src="" class="photo">
+    <h2></h2>
+
+</body>
+
+</html>

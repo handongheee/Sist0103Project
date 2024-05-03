@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열2</title>
+    <style>
+        img {
+            width: 60px;
+            height: 70px;
+            border: 2px solid gray;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>배열 변수에 색상 5개 저장 후 배열 값을 해당 색상으로 출력</h2>
+    <script>
+        var arr1 = ['green', 'blue', 'gray', 'pink', 'orange'];
+
+        for (var i = 0; i < arr1.length; i++) {
+            document.write("<b style='color:" + arr1[i] + "'>" + arr1[i] + "</b> &nbsp;");
+        }
+        document.write("<hr>");
+
+        // of: arr1의 배열값이 차례대로 반복해서 꺼내진다 (자바의 확장for문과 비슷(for-each))
+        for (var n of arr1) {
+            document.write("<b style='color:" + n + "'>" + n + "</b> &nbsp;");
+        }
+        document.write("<hr>");
+
+        // in: 배열의 인덱스를 얻고자 할 경우
+        for (var idx in arr1) {
+            document.write("<b>" + idx + ":" + arr1[idx] + "</b>&nbsp;")
+        }
+    </script>
+
+    <h2>이미지를 배열 초기값으로 지정 후 출력</h2>
+    <script>
+        var imgArr1 = ['../image/만화이미지/02.png', '../image/Food/3.jpg', '../image/logoimg/acc03.png', '../image/logoimg/icon04.png'];
+
+        var s = "배열개수: " + imgArr1.length + "<br>";
+
+        for (var i = 0; i < imgArr1.length; i++) {
+            s += "<img src='" + imgArr1[i] + "'> ";
+        }
+        document.write(s);
+
+    </script>
+
+
+    <h2>배열_new Array()로 지정 후 출력</h2>
+    <script>
+        var imgArr2 = new Array(4);
+
+        imgArr2[0] = '../image/만화이미지/02.png';
+        imgArr2[1] = '../image/Food/3.jpg';
+        imgArr2[2] = '../image/logoimg/acc03.png';
+        imgArr2[3] = '../image/logoimg/icon04.png';
+
+        var s = "배열개수: " + imgArr2.length + "<br>";
+
+        for (var i = 0; i < imgArr2.length; i++) {
+            s += "<img src='" + imgArr2[i] + "'> ";
+        }
+        document.write(s);
+    </script>
+
+    <h2>배열_new Array()로 지정 후 출력_push로 5개 삽입 후 출력</h2>
+    <script>
+        var imgArr3 = new Array();
+
+        imgArr3.push('../image/만화이미지/02.png');
+        imgArr3.push('../image/Food/3.jpg');
+        imgArr3.push('../image/logoimg/acc03.png');
+        imgArr3.push('../image/logoimg/icon04.png');
+        imgArr3.push('../image/Food/6.jpg');
+
+        var s = "배열개수: " + imgArr3.length + "<br>";
+        for (var i = 0; i < imgArr3.length; i++) {
+            s += "<img src='" + imgArr3[i] + "'>";
+        }
+        document.write(s);
+    </script>
+
+    <h2>위 예제에서 마지막 이미지 2개 지우고 다시 출력</h2>
+    <script>
+        imgArr3.pop();
+        imgArr3.pop();
+
+        var s = "배열개수: " + imgArr3.length + "<br>";
+        for (var i = 0; i < imgArr3.length; i++) {
+            s += "<img src='" + imgArr3[i] + "'>";
+        }
+        document.write(s);
+    </script>
+
+</body>
+
+</html>

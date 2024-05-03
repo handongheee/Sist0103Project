@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트01</title>
+
+    <style>
+        #img1 {
+            position: absolute;
+            max-width: 300px;
+            left: 500px;
+            top: 50px;
+            border: 10px solid olive;
+            border-radius: 25px;
+        }
+    </style>
+
+    <script>
+        // 라인 변경
+        function changeLine(lineStyle) {
+            img1.style.borderStyle = lineStyle;
+        }
+
+        // 이미지 변경
+        function changeImage(imgsrc) {
+            img1.setAttribute("src", imgsrc);
+        }
+    </script>
+</head>
+
+<body>
+    <h3>이미지 선택</h3>
+    <select onchange="changeImage(this.value)">
+        <option value="../image/Food/1.jpg">메뉴01</option>
+        <option value="../image/Food/2.jpg">메뉴02</option>
+        <option value="../image/Food/3.jpg">메뉴03</option>
+        <option value="../image/Food/4.jpg">메뉴04</option>
+    </select>
+
+    <br><br>
+
+    <h3>선 종류 선택</h3>
+    <input type="radio" value="solid" name="line" onclick="changeLine(this.value)">Solid
+    <input type="radio" value="Dotted" name="line" onclick="changeLine(this.value)">Dotted
+    <input type="radio" value="dashed" name="line" onclick="changeLine(this.value)">Dash
+    <input type="radio" value="double" name="line" onclick="changeLine(this.value)">Double
+    <input type="radio" value="groove" name="line" onclick="changeLine(this.value)">Groove
+    <input type="radio" value="inset" name="line" onclick="changeLine(this.value)">Inset
+
+    <img src="../image/Food/1.jpg" id="img1">
+
+</body>
+
+</html>
